@@ -1,0 +1,470 @@
+\documentclass[twoside]{cctart}
+\usepackage{headrule,vatola,amssymb}
+\usepackage{graphicx,multirow,bm}
+\usepackage{booktabs,dcolumn}%关于小数点对齐
+\newcolumntype{z}[1]{D{.}{.}{#1}}%关于小数点对齐
+\usepackage{tabularx}%关于表自动折行
+\usepackage{slashbox}%表格加斜线
+
+
+%=========================Page Format (此部分定义请勿修改)================================
+\setlength{\voffset}{-5mm} \headsep 0.3 true cm \topmargin 0pt
+\oddsidemargin 0pt \footskip 2mm \evensidemargin 0pt \textheight
+24.5 true cm \textwidth 16.5 true cm \setcounter{page}{993}
+\parindent 2\ccwd
+\nofiles
+
+\TagsOnRight\baselineskip 12pt
+
+\catcode`@=11 \long\def\@makefntext#1{\parindent 1em\noindent \hbox
+to 0pt{\hss$^{}$}#1} \catcode`\@=12
+
+\catcode`@=11
+\def\evenhead{}
+\def\oddhead{}
+\headheight=8truemm
+% \footheight=0pt
+\def\@evenhead{\pushziti
+  \vbox{\hbox to\textwidth{\rlap{\rm\thepage}\hfil{\evenhead}\llap{}}
+    \protect\vspace{2truemm}\relax
+    \hrule depth0pt height0.15truemm width\textwidth
+  }\popziti}
+\def\@oddhead{\pushziti
+  \vbox{\hbox to\textwidth{\rlap{}{\oddhead}\hfil\llap{\rm\thepage}}
+    \protect\vspace{2truemm}\relax
+    \hrule depth0pt height0.15truemm width\textwidth
+  }\popziti}
+\def\@evenfoot{}
+\def\@oddfoot{}
+\catcode`@=12
+
+\renewcommand{\baselinestretch}{1.2}
+\def\d{\displaystyle} \def\n{\noindent}
+\def\ST{\songti\rm\relax}
+\def\HT{\heiti\bf\relax}
+\def\FS{\fangsong\relax}
+\def\KS{\kaishu\relax}
+\def\sz{\small \zihao{-5}}
+\def\vs{\vspace{0.3cm}}
+\def\ay{\arraycolsep=1.5pt}
+
+\def\SEC#1#2#3{\vspace*{.2in} \begin{center}
+{\LARGE\zihao{3}\HT #1}\\[.2in]
+\zihao{4}\fangsong#2\\[.1in]
+\small\zihao{-5}#3 \end{center}}
+
+\def\ESEC#1#2#3{\vskip.2in \begin{center}
+{\Large \HT #1}\\[.2in]
+\normalsize #2\\[.1in]
+\footnotesize #3 \end{center}}
+
+\def\SUB#1{\vspace{.15in} \leftline{\large\bf\heiti\zihao{-4}#1}
+\vspace{.07in}}
+\def\sub#1{\leftline{\bf\heiti\zihao{5}#1}}
+
+\def\REFERENCE{\vspace*{.2in}
+{\noindent\bf\heiti\zihao{5}参考文献} \vspace*{.1in}}
+%=========================================================================
+
+
+\begin{document}
+
+%--------------------------页眉-------------------------------------
+\def\evenhead{{\protect\small{\zihao{-5}\songti \hfill 系~统~工~程~理~论~与~实~践}
+\hfill{\zihao{-5}\songti 第} \,\,31\,{\zihao{-5}\songti 卷}}}
+\def\oddhead{{\protect{\zihao{-5}\songti 第}\small \,\,X\,{\zihao{-5}\songti 期}
+\hfill
+{\small\zihao{-5}\songti{王海燕,唐润等:DEA-Gini准则在城市公共交通企业绩效评价中的应用}
+ }\hfill}}
+
+%---------------------------首页页眉---------------------------------
+\vspace*{-13mm} \thispagestyle{empty} \noindent \hbox to
+\textwidth{\small{\zihao{-5}\songti 第}\,\,31\,{\zihao{-5}\songti
+卷 第}\,\,X\,{\zihao{-5}\songti 期}\hfill {\zihao{5}
+系统工程理论与实践}\hfill Vol.31, No.X} \vskip -0.2mm
+\par\noindent
+\hbox to \textwidth{\small 2012{\zihao{-5}\songti 年}\,\,X
+{\zihao{-5}\songti 月}\hfill Systems Engineering --- Theory \&
+Practice\hfill XX, 2012} \vskip -0.3mm
+\par\noindent
+\rule[2mm]{\textwidth}{0.5pt}\hspace*{-\textwidth}\rule[1.5mm]{\textwidth}{0.5pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ziju{0.025} \vskip -7mm  \noindent {\small 文章编号:\
+1000-6788(2011)0X-XXXX-XX \qquad \qquad {中图分类号:}\ \ U121
+\qquad\qquad{文献标志码:\ \ A}}
+%-----------------------脚注--------------------------------------------------
+\footnotetext{{\HT 收稿日期:}\ 待定}
+ \footnotetext{{\HT 资助项目:}\ 国家自然科学基金面上项目（70872040）;美国能源基金会项目（G-1008-13195）；江苏省交通运输厅（09X04）；科技支撑计划--社会发展项目（BE2011829）           }
+\footnotetext{{\HT 作者简介:}\  王海燕（1968－），女，安徽，教授，博士；唐润（1979－），男，安徽，讲师，博士。 }
+
+%---------------------题目、作者、单位、摘要、关键词, 中图分类号(必须提供)------------------
+
+%\SEC{中文题目}{作者}{单位}
+\SEC{DEA-Gini准则在城市公共交通企业绩效评价中的应用}
+{王海燕$^{1,2}$,唐润$^{1,2}$} {(1. 江苏省质量安全工程研究院, 南京
+210046; 2. 南京财经大学\ 管理科学与工程学院, 南京
+210046)}
+
+\vskip.05in {\narrower\zihao{5}\fangsong\noindent {\heiti 摘\quad
+要}利用Gini准则方法提高数据包络分析（Data Envelopment Analysis，DEA）方法的判别能力，以降低DEA结果受指标维数影响的风险。并通过2011年上半年南京市公交企业的相关数据说明如何利用DEA-Gini准则方法对相关企业进行客观的绩效评价。在建立的指标体系及其数据的基础上，通过对指标集取子集，利用DEA方法求出在各指标子集下公交企业的效率，再基于Gini准则给各子集赋予权重，最终得到一组更为客观的城市公共交通系统绩效评价结果，即综合效率（Comprehensive Efficiency Score，CES）。在此结果上提出可行的建议，以保证优先发展城市公共交通的顺利实施。
+
+\vskip.05in \noindent {\heiti 关键词} 城市公共交通；绩效评价；数据包络分析；Gini准则；综合效率；判别能力
+
+}
+%%%%%%%%%%%%%%%英文部分%%%%%%%%%%%%%%%%%%%%%%%
+
+%\ESEC{英文题目}{作单}{单位}
+\ESEC{Evaluating the efficiency of urban public transit enterprises: an application of DEA-Gini approach} {WANG Hai-yan$^{1,2}$, \ TANG Run$^{2}$} {  (1. Jiangsu Province Institution of Quality \& Safety Engineering, Nanjing 210046 China; \\2. School of Management Science \& Industrial Engineering, Nanjing University of Finance \& Economics, Nanjing 210046 China)}
+
+
+
+\vskip.05in \rm \noindent {\narrower\small {\bf Abstract}\ \ It improves the discriminatory power of traditional DEA (data envelopment analysis) by Gini criteria approach to decrease the risk of influencing the results of performance evaluation, which is influenced by the number of evaluating indicator. Utilizing the data from the urban public transit enterprises of Nan Jing in the first half of the year 2011 illustrates how to apply the DEA-Gini approach to evaluate the efficiency of urban public transit enterprises and give an objective performance evaluation result. After establishing a set of evaluating indicator system considering both commonweal and business for urban public transit enterprises, calculating the efficiencies of them under each possible variable subsets. Then obtaining the degrees of importance of all possible variable subsets based on Gini rule, and the comprehensive efficiency scores (CESs) can be gained at last, which can give a much more objective appraisal for urban public transit enterprises. Based on the results, doable suggestions are advanced to ensure that the giving priority to the development of public transportation can be put into practice.
+
+\vskip.05in \noindent{\bf Keywords}\ \ urban public transit; performance evaluation; data envelopment analysis (DEA); Gini rule; comprehensive efficiency score (CES); discriminatory power
+
+}
+
+
+\normalsize \normalsize \abovedisplayskip=2.0pt plus 2.0pt minus
+2.0pt \belowdisplayskip=2.0pt plus 2.0pt minus 2.0pt \baselineskip
+15pt
+
+%%%%%%%%%%%%%%%%%%%%%%正文%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\SUB{1\ \ 引言}%一级标题
+近年来，随着经济的快速发展和城市规模的不断扩大，城市交通拥堵、出行不便等问题日益严重，
+``优先发展城市公共交通''己成为当前缓解交通拥堵等城市交通问题的首要和最佳选择。
+城市公共交通系统是市场性与计划性、商业性与公益性的矛盾综合体，如何对城市公共交通企业展开绩
+效评价成为城市公共交通领域的一个重要课题。
+
+数据包络分析（Data Envelopment Analysis，DEA）[1]作为一种重要的非参数绩效评价方法在许多领域都得到广泛的应用[2][3][4]。近年来，国际上已有一些学者运用DEA方法进行城市公共交通系统的绩效评价，如[5]利用网络DEA模型对市中心的预留空间系统（the Downtown Space Reservation System，DSRS）进行绩效评价。[6]基于DEA方法和地理信息系统（Geographic Information Systems，GIS）对公交线路展开绩效评价等。
+
+DEA允许每个被评估的决策单元（Decision Making Unit, DMU）在约束条件下自主选择一组唯一的投入和产出权重去最大化其效率，且其效率不大于1。如果DMU效率值为1，则称其为（弱）有效。在利用DEA方法进行城市公共交通系统绩效评价前，需要建立一套科学的绩效评价指标体系。国内已有不少关于城市公共交通系统服务的指标体系的研究，如[7]从公共交通服务的特殊性以及乘客满意度评价的主观心理特性出发，建立了公共交通服务水平乘客满意度评价指标体系。[8]在考虑到多方面的影响因素后，建立了在社会主义市场经济条件下的铁路保价运输管理与服务质量评价指标体系。[9]在总结国内外现有评价指标体系的基础上，结合我国城市当前的规划工作实际，提出了一套适用于我国城市轨道交通线网规划的综合评价指标体系等，然而这些文献都没有考虑到指标数量多少对结果的影响。
+
+利用DEA方法对城市公共交通企业进行绩效评价时，存在着对指标权重空间维数依赖性过高，即指标数量的多少会严重影响到DEA判别能力高低的缺陷。通常指标权重空间维数越大，效率值越高，进而会导致有效DMU的数量增多[10][11],造成DEA的模型判别能力降低[12]。选择过少的指标容易造成绩效评价的结果不能全面充分地反映绩效评价的目的。为了解决这个问题，[13]提出指标变量数量一般不超过样本数量的三分之一。在城市公共交通企业绩效评价的实际操作中，由于人类的理性是有限的[14]，而在城市公共交通企业运营过程中几乎所有的潜在要素都对其绩效结果产生影响，容易造成所选取的指标数量过多使不确定性增加的问题。Gini准则在分类回归树[15]中被用来度量信息杂度。Gini系数越大，信息杂度越大，不确定性越大。因此可以考虑利用DEA-Gini准则来降低指标的数量[16]提高DEA的判别能力，并将其应用到城市公共交通系统的绩效评价中。在选取好城市公共交通企业的绩效评价指标集后，通过对其取子集，然后利用DEA方法求出在各指标子集下南京市公交企业的效率，并基于Gini准则给各子集赋予权重，避免人的主观性对结果产生影响，最终得到一组更为客观的城市公共交通系统绩效评价结果，即综合效率（Comprehensive Efficiency Score，CES），以促进城市公共交通企业改善服务质量，降低运营成本，提高乘客的满意度，增强公共交通的吸引力，保证优先发展城市公共交通战略的健康顺利实施。
+
+\SUB{2\ \ DEA-Gini准则}%一级标题
+
+\sub{2.1\ \ DEA模型}
+假设有$n$家公交企业（记为DMU），$DMU_j $（$j =
+1,2,...,n$）消耗$m$种投入（如千公里成本、运营车辆数（标准台）、员工数量等）$x_{ij}(i = 1,2,...,m)$，生产出$s$种产出（如乘客满意度、千公里收入等）$y_{rj}(r =
+1,2,...,s)$，那么基于CCR模型（Charnes, Cooper and Rhodes
+Model）[1]的投入导向型模型，对于待评估公交企业的效率$E_{0}$为：
+\begin{equation}
+    \begin{array}{l}
+    max\sum\limits_{r=1}^{s}\mu_{r}y_{ro}=E_{0}(M,S)\\
+    st.
+    \left\{
+        \begin{array}{l}
+        \sum\limits_{r=1}^{s}\mu_{r}y_{rj}-\sum\limits_{i=1}^{m}\nu_(i)x_(ij)\leqq0,\forall j\in N \\
+        \sum\limits_{i=1}^{m}\upsilon_{i}x_{i0}=1 \\
+        \upsilon_{i},u_{r}\geqslant 0,\forall i \in M,r \in S
+        \end{array}
+    \right.
+    \end{array}
+\end{equation}
+
+其中$E_{0}(M,S)$为待评估公交企业$DMU_{0}$的效率，$\mu_{r},\upsilon_{i}$分别是第$r$种产出和第$i$ 种投入的未知权重。模型（1）显示$DMU_{0}$ 能够在约束条件下选择一组最优权重以最大化其效率。显然的，所选择的绩效评价指标数量多少会严重影响到CCR模型的判别能力，
+待评估公交企业的效率值严重依赖于所选择的投入产出的权重空间维数。同样的缺陷在BCC模型（Banker, Charnes, and Cooper Model）[17]上也存在。
+
+\sub{2.2\ \ Gini准则}
+Gini系数是信息杂度的一种度量，Gini系数的计算十分简便。
+
+{\HT 定义~1}. Gini系数为$G=1-\sum\limits_{j=1}^{n}p_{j}^{2}$, 其中$p_{j}=E_{j}/\sum\limits_{j=1}^{n}E_{j}$,$j \in \{1,2,...,n\}$，表示某节点中类别$j$所占的比例。
+
+一般地，Gini系数越大，信息杂度越大，不确定性就越大；反之不确定性就越小。由于$0\leq p_{j} \leq 1$，因而$0\leq G \leq 1$ 。对应地，我们定义一个信息纯度，使得不确定性越大，信息纯度越小。
+
+{\HT 定义~2}\quad信息纯度为
+\begin{equation}
+  d=\sum\limits_{j=1}^{n}p_{j}^{2},j \in N=\{1,2,...,n\}
+\end{equation}
+
+
+当某节点中仅含有一个类别时，不确定性最小，$G=0$，其信息纯度最大，$d=1$ 。当某节点下所有类别的值都相同时，不确定性最大，信息纯度最小。
+
+\sub{2.3\ \ 基于Gini准则提升DEA判别能力}
+首先，科学地确定衡量绩效的指标集。一般地，应尽可能全地确定所有的潜在变量（影响因素）的基础上，仔细分析各潜在变量对绩效评价结果的影响大小。有些潜在变量与绩效评价目的相关，但是不能确定对结果的影响大小，可以将它们列入到指标集中。然后列出指标集中所有变量子集，将这些子集看成是决策树的节点，将每个城市公交企业看成是不同的类别（如图1）。
+\begin{center}
+\includegraphics[scale=0.8]{figure1.jpg}\\
+\centerline{\bf \sz 图1\
+构建城市公共交通企业绩效评价指标子集决策树}
+\end{center}
+
+其次，对所选取的指标集取子集，并利用DEA方法分别求出各子集下各公交企业的效率值。投入产出子集的数量记为$K=(2^{m}-1)\times(2^{s}-1)$，其中$m\in M,s\in S$ ，$M$和$S$分别为投入和产出集。$M_{k}$是DEA模型的第$k$个变量子集，模型集为$\Omega=\{M_{1},M_{2},...,M_{k}\}$。$DMU_{j}$ 在$M_{k}$ 下的效率值记为$E_{kj}$,$j=1,2,...,n$,基于DEA模型可以得到一个如下的效率矩阵$[E_{jk}]_{n\times K}$ ，对应图1中各指标子集与公交企业之间的$E_{kj}$，$j=1,2,...,n$。
+\begin{equation}
+  \begin{array}{c}
+    \\
+    DMU_{1}\\
+    DMU_{2}\\
+    ...\\
+    DMU_{n}\\
+  \end{array}
+  \begin{array}{c}
+    \begin{array}{cccc}
+        M_{1}   & M_{2}     & ...   & M_{K} \\
+    \end{array}  \\
+    \left[
+    \begin{array}{cccc}
+        E_{11}  & E_{12}    & ...   & E_(1K) \\
+        E_{21}   & E_{21}     & ...   & E_{2K} \\
+        ...      & ...       & ...    & ... \\
+        E_{n1}   & E_{n2}     & ...   & E_{nK}
+    \end{array}
+    \right]
+  \end{array}
+\end{equation}
+
+
+最后，基于Gini准则提升DEA的判别能力，得到一组更为客观的城市公共交通企业的绩效评价结果。
+为了衡量各子集中公交企业效率值的确定性大小，利用（2）式计算所有变量子集的信息纯度$d_{k}$ ，以得到各子集相应的权重。由于信息纯度与信息集的确定性呈正相关的关系，因此可以最终通过
+对各子集效率及其权重加权求和以求出所有公交企业的CES，即为判别能力较传统DEA增强的绩效评价结果。
+
+{\HT 算法1：}\quad基于DEA-Gini准则对于城市公交企业的绩效评价
+
+Step 1: 利用各变量子集代入DEA模型中计算效率矩阵$[E_{jk}]_{n\times K}$；
+
+Step 2: 利用$p_{jk}=E_{jk}/\sum\limits_{j=1}^{n}E_{jk},k=1,2,...,K$对效率矩阵$[E_{jk}]_{n\times K}$归一化；
+
+Step 3: 计算各子集$M_{k}$的信息纯度$d_{k}=\sum\limits_{j=1}^{n}p_{jk}^{2},k=1,2,...,K$；
+
+Step 4: 归一化$d_{k}$得到$W_{k}=d_{k}/\sum\limits_{k=1}^{K}d_{k},k=1,2,...,K$ , 其中$\sum\limits_{k=1}^{K}W_{k}=1$ ；
+
+对于一个给定的模型在变量集$M_{k},(k=1,2,...,K)$下，如果它所得到的所有的城市公交企业效率值相等，那么信息纯度最小，权重$W_{k}$ 达到最小值。$W_{k}$的值越大，其判别能力越大。
+
+Step 5: 通过$\theta_{j}=\sum\limits_{k=1}^{K}W_{k}E_{jk},j=1,2,...,n$ ，即得到CES。它的判别能力比传统DEA方法要强，利用CES可以对城市公交企业给出更为客观的绩效评价。
+
+\SUB{3\ \ 南京市公交企业的绩效评价}%一级标题
+
+本文选择南京市七家公交企业，通过采集它们在2011年上半年的相关原始数据，利用DEA-Gini准则方法对各公交企业展开绩效评价分析。
+
+\sub{3.1\ \ 变量选择}
+为支持公交行业的发展，考虑到公交行业的公益性及乘客的感受，乘客满意度被选作城市公交行业的产出之一。同时，考虑到城市公交行业的商业性，需要考虑到各公交企业的市场绩效，因此，千公里收入和千公里成本分别被选作城市公交行业的产出和投入。此外，考虑到要能反映各公交企业的规模，本文选择营运车辆（标准台）作为另一个投入指标。最后，本文建立了一套具有城市公交行业特色的指标体系（如表1）
+
+%%%%%%%%%%%%%%%%%%%%插入表格%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}{\sz
+{\textbf{表1 投入产出指标集及相关指标说明}}\\
+\begin{tabular}{l|l|l} \toprule
+     & 指标 &  说明 \\
+\hline
+ 投入 & 营运车辆（标准台）   &不同类型的运营车辆依据统一的折算当量合成的运营车数\\ \cline{2-3}
+      & 千公里成本  &千公里成本=(运营总成本 1000)/运营总里程\\
+      \hline
+ 产出 & 乘客满意度 & 通过市场问卷调查，利用结构方程\\
+      &            & 模型 （Structural Equation Model，简称SEM）建模测算所得\\ \cline{2-3}
+      & 千公里收入 & 千公里收入=(运营总收入 1000)/运营总里程\\
+\bottomrule
+\end{tabular}}
+\end{center}
+注：相关说明来自《中华人民共和国城镇建设行业标准--城市公共交通经济技术指标计算方法 公共汽车、电车》，中华人民共和国建设部1999年6月4日批准实施。
+
+\sub{3.2\ \ 乘客满意度指数的测算}
+
+
+\sub{3.2.1\ \ 基于PLS-SEM测算乘客满意度指数}
+
+目前有关顾客满意度的结构方程模型（structural equation modeling, SEM）大体分为三类，瑞典（SCSB）、美国（ACSI）、欧洲（ECSI）顾客满意度指数模型[18]。ACSI模型是在SCSB模型的基础上构建的，
+是目前被广泛采用或借鉴的顾客满意度指数测评模型，模型包括顾客期望、感知质量、感知价值、顾客满意、顾客抱怨、顾客忠诚度6个潜变量。基于ACSI模型，公交行业的乘客满意度指数概念模型如下：
+
+\begin{center}
+\includegraphics[scale=0.8]{figure2.png}\\
+\centerline{\bf \sz 图2\
+公交行业的乘客满意度指数概念模型}
+\end{center}
+
+在模型中，乘客满意度、乘客抱怨、乘客忠诚则是作为结果变量出现的，受前三个变量影响产生的。当乘客在事后的实际感知低于事前的期望时，乘客满意程度低，容易产生乘客抱怨；当乘客在事后的实际感知高于事前的期望时，乘客满意程度高，容易产生乘客忠诚。
+
+在乘客满意度测评中，存在如顾客期望、顾客感知质量等变量并不能直接测量的问题，需要找到一些可观察的变量作为这些潜在变量的``标识"（indicator）[19]。这些潜变量的标识包含了大量的测量误差，导致常规回归模型参数估计产生偏差。结构方程模型既能在分析中处理测量误差，又可分析潜变量之间的结构关系，但在求解结构方程模型过程中，其假设测量变量服从正态分布，由于乘客满意度的观测总体分布不确定，另外，各项指标之间的相关性是明显的，因此使用普通多元回归会带有较大的误差，偏最小二乘法（Partial Least Square，PLS）在求解过程中允许测量变量、潜变量为非正态分布，而且通过潜变量与其自身测量变量以及潜变量与其他相关潜变量的测量变量之间的一系列迭代进行求解，不仅可以有效地解决潜变量测量误差问题，可以有效解决传统结构方程模型在构造顾客满意度模型中所遇到的变量非正态问题[20]，取得较好的回归结果。因此，本文采用的是PLS-SEM[20]方法建模测算乘客满意度指数。
+
+\sub{3.2.2\ \ 抽样调查}
+乘客满意度调研主要面向经常乘坐公交出行的乘客。在构建公交行业乘客满意度指数过程中，必须要考虑到公交服务的特点，概括如下：第一，服务质量难以定量化；第二，不同地区、公司以及车辆服务质量的差异性明显；第三，较难建立服务质量保证体系；第四，乘客的参与和配合情况影响服务质量；第五，服务速度是服务质量的重要内容。按照层次合理、明确无歧义、长度适中、描述中性和便于处理等原则进行乘客满意度问卷设计（见表2）。
+
+%%%%%%%%%%%%%%%%%%%%插入表格%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}{\sz
+{\textbf{表2 南京市公交行业乘客满意度指标模型}}\\
+\begin{tabular}{ll} \toprule
+    潜变量 &  测量变量 \\
+    \hline
+    乘客期望$\xi$         & 乘客对南京公交的总体期望\\
+    \hline
+    感知价值$\eta_{2}$    & 1）乘客对公交票价的感知程度\\
+                          & 2）乘客对公交服务的感知程度\\
+    \hline
+    感知质量$\eta_{1}$    & 1）乘客对站台信息的感知程度\\
+                          & 2）乘客对站台环境的感知程度\\
+                          & 3）乘客对高峰时段车厢拥挤的感知程度\\
+                          &  4）乘客对公交舒适度的感知程度\\
+                          &  5）乘客对候车时间的感知程度\\
+                          &  6）乘客对公交准点率的感知程度\\
+                          &  7）乘客对换乘步行时间的感知程度\\
+                          &  8）乘客对站牌地点的感知程度\\
+                          &  9）乘客对车门启闭感知程度\\
+                          &  10）乘客对公交行驶平稳性的感知程度\\
+                          &  11）乘客对安全设施完整性的感知程度\\
+                          &  12）乘客对特殊人群座椅设置的感知程度\\
+                          &  13）乘客对公交信息化服务水平的感知程度\\
+                          &  14）乘客对公交乘务服务的感知程度\\
+                          &  15）乘客对公交商业广告与乘车环境和谐程度的感知程度\\
+    \hline
+    乘客满意度$\eta_{3}$    & 1）乘客对公交服务的满意程度\\
+                            & 2）乘客是否有过投诉行为及对投诉处理结果满意程度\\
+    \hline
+    乘客抱怨$\eta_{4}$      & 乘客对南京公交不满意的方面\\
+    \hline
+    乘客忠诚$\eta_{5}$      &1）乘客对因为改善服务而提高票价的态度\\
+                            &    2）乘客可以接受票价涨价的范围\\
+                            &    3）乘客在有其他出行方式可选择的情况下对乘坐公交的态度\\
+                            &    4）乘客是否会建议朋友家人选择公交出行\\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+为了能够真实反映南京市7家公交企业的乘客满意情况，选取了公交总公司、中北巴士、雅高巴士、新城巴士、新宁浦公司、浦口客运、六合客运等单位进行整群抽样调查。发放调查问卷1035份，回收有效问卷893份。经统计分析这些问卷可以很好的涵盖各家公交企业的乘客满意情况，能够反映南京市居民对城市公交的总体感受。
+
+本文采用α信度系数法进行分析，问卷的乘客满意度的信度（Reliability）系数为0.865，大于可信度阈值0.80，因而问卷所得的公交行业乘客满意度指数结果很可靠。基于PLS-SEM模型得到的2011年上半年南京市公交企业的乘客满意度数据见表3。
+
+\sub{3.3\ \ 数据分析}
+
+2011年上半年南京市公交企业的营运车辆（标准台）、千公里成本、乘客满意度和千公里收入具体数据详见下表
+%%%%%%%%%%%%%%%%%%%%插入表格%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}{\sz
+{\textbf{表3 南京市公交行业乘客满意度指标模型}}\\
+\begin{tabular}{c|c|c|c|c} \toprule
+    DMU &  \multicolumn{2}{c|}{\itshape 投入}               & \multicolumn{2}{c}{\itshape 产出}  \\ \cline{2-5}
+        & 运营车辆  & 千公里成本 & 乘客满意度 &千公里收入\\ \cline{2-5}
+    \hline
+    A & 3457 &	7210.27 &	60.87 &	3388.37 \\
+    B &	1392 &	9250.02 &	63.77 &	3847.19 \\
+    C &	557 &	6267.08 &	55.56 &	3234.06 \\
+    D &	981 &	5747.09 &	50.48 &	3498.54 \\
+    E &	323 &	5113.88 &	56.68 &	2855.03 \\
+    F &	319 &	4286.3  &	61.83 &	3498.78 \\
+    G &	370 &	4443.94 &	61.93 &	3161.62 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+注：本文用此数据仅作学术理论探讨。
+
+本文以投入导向型的CCR模型为例，说明利用DEA-Gini准则的方法对各企业进行绩效评价和分析。利用``基于DEA-Gini准则对于城市公交企业的绩效评价"方法（即2.3节算法1）对表3中的数据进行处理，所得结果详见表4：
+
+%%%%%%%%%%%%%%%%%%%%插入表格%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}{\sz
+{\textbf{表4 基于Gini准则的各子集重要性和CES}}\\
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c|c|c|c} \toprule
+    $M_{k}$ &  \multicolumn{4}{c|}{\itshape 变量选择}   & \multicolumn{7}{c|}{\itshape 各子集的投入导向型CCR效率}  &$W_{k}$ \\ \cline{2-12}
+        & $X_{1}$ & $X_{2}$ & $Y_{1}$ & $Y_{2}$ &   A   &   B   &   C   &   D   &   E  &   F  &   G  &    \\ \hline
+    1 &	1 &	0 &	1 &	0 &	0.0908 & 0.2364 & 	0.5146 & 	0.2655 & 	0.9054 & 	1 & 	0.8636 & 	0.1328 \\
+    2 &	1 &	0 &	0 &	1 &	0.0894 & 	0.2520 & 	0.5294 & 	0.3252 & 	0.8059 & 	1 & 	0.7791 & 	0.1278 \\
+    3 &	0 &	1 &	0 &	1 &	0.5757 & 	0.5095 & 	0.6322 & 	0.7458 & 	0.6840 & 	1 & 	0.8716 & 	0.1008 \\
+    4 &	1 &	0 &	1 &	1 &	0.0908 & 	0.2520 & 	0.5294 & 	0.3252 & 	0.9054 & 	1 & 	0.8636 & 	0.1293 \\
+    5 &	1 &	1 &	1 &	0 &	0.5852 & 	0.4779 & 	0.6146 & 	0.6089 & 	0.9054 & 	1 & 	0.9661 & 	0.1030 \\
+    6 &	0 &	1 &	1 &	0 &	0.5852 & 	0.4779 & 	0.6146 & 	0.6089 & 	0.7684 & 	1 & 	0.9661 & 	0.1026 \\
+    7 &	0 &	1 &	1 &	1 &	0.5852 & 	0.5095 & 	0.6322 & 	0.7458 & 	0.7684 & 	1 & 	0.9661 & 	0.1013 \\
+    8 &	1 &	1 &	0 &	1 &	0.5757 & 	0.5095 & 	0.6322 & 	0.7458 & 	0.8059 & 	1 & 	0.8716 & 	0.1007 \\
+    9 &	1 &	1 &	1 &	1 &	0.5852 & 	0.5095 & 	0.6322 & 	0.7458 & 	0.9054 & 	1 & 	0.9661 & 	0.1016 \\ \hline
+    \multicolumn{5}{c}{\itshape CES} & 0.3904 & 	0.4005 & 	0.5865 & 	0.5457 & 	0.8324 & 	1 & 	 0.8963 & 	- \\
+    \multicolumn{5}{c}{\itshape CES排序} & 7 &	6 &	4 &	5 &	3 &	1 &	2 &	- \\
+    \multicolumn{5}{c}{\itshape 传统CCR效率排序} & 6 &	7 &	5 &	4 &	3 &	1 &	2 &	 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+注：其中``1"表示相应的变量在子集中被选中，``0"表示没有。$M_{k}$和$W_{k}$分别表示第$k$个子集及其权重；$X_{1}$和$X_{2}$分别表示标准运营车数和千公里成本；$Y_{1}$和$Y_{2}$分别表示乘客满意度和千公里收入。
+
+通过对表4中各子集及其权重的对比分析，可以发现一个总体趋势是子集变量选择的越多，其对应的权重也是在下降的。这是由于子集的变量数量越多，
+一般会导致各公交企业的效率值越高，进而模糊性越强，进而权重也会较低。如子集$M_{9}$ ，CCR效率值最大是F，值为1，最小的是B，值为0.5095，各公交企业的CCR效率值差距相对比较小，不确定性增加，因而其权重$W_{9}$ 也较小。由此可见，影响权重的主要是集中各公交企业的效率值差距，如果差距越大，则确定性越强，信息纯度越高，因而其权重也相应的较高。
+如果各公交企业的效率值差距较小，即使子集中指标的数量较少，也会被赋予较低的权重，如子集$M_{3}$；反之，则会被赋予较低的权重，如子集$M_{4}$ 。给模糊性（或不确定性）较强的子集赋予较小的权重，其意义在于在未知或是不完全确定潜在变量对结果影响程度的时候，尽可能减少人的主观能动性对绩效评价结果产生的误差，进而能够提高DEA结果的判别能力。同时可发现，通过这种方法得到的CES能够大大降低多个有效DMU同时出现的可能性。
+
+\begin{center}
+\includegraphics[scale=0.8]{figure3.png}\\
+\centerline{\bf \sz 图3\
+传统CCR效率和CES结果比较}
+\end{center}
+
+如图3所示，黑色柱状图是基于传统的投入导向型CCR模型下，对数据集直接求效率值所得，白色柱状图是基于DEA-Gini准则方法所得结果。
+由图3可以直观地看出，南京市各公交企业的传统CCR效率值和CES相比差距较大，且后者的判别能力较前者有所增强。比较表4中倒数第三行和第四行的结果，
+可以按照绩效将南京市公交企业划分为三个``梯队"。第一梯队是F、G和E；第二梯队是C和D；第三梯队是A和B。各个梯队内部两种方法的绩效值都差距相对较小。
+可以发现基于DEA-Gini准则方法所得绩效结果在总体上是符合传统DEA趋势的，但是在第二、三梯队内部，CES与传统DEA方法得到的绩效排序结果有所不同。
+这是由于效率值差距较小，信息的不确定性在增加，指标的选择稍有不同可能就会改变绩效评价结果，因此基于DEA-Gini准则方法显然更符合实际情况。
+由表4最后两行的绩效排序结果可知，A和B绩效最差。这是由于这两者的投入都较大，它们的运营车辆数（标准台）和千公里成本都是对应投入项中最大的前两位，
+但是在产出项中，它们的表现并不占明显的优势。
+
+
+绩效评价为公交企业的健康发展指出了努力方向。由于公交行业的计划性和公益性，在千公里收入难以大幅度增加的情况下，需要注意提高乘客满意度，
+以提高公共交通的服务水平，增强公共交通的吸引力，这将有利于``优先发展城市公共交通"战略的顺利实施和公交企业市场表现的改善。因此，虽然B的绩效较差，
+但是其乘客满意度是最高的，B接下来需要找出原因，采取措施，重点降低千公里成本，以提高其市场绩效。相比之下，A不仅需要努力提高乘客满意度，
+而且要改进管理方法，降低管理成本，提高营运车辆和成本的利用效率，科学地降低相关投入，以提高企业的乘客认可度和市场竞争力。
+E、C和D虽然分别属于绩效最高的第一、二梯队，但是它们的乘客满意度较低，具有较大的提升空间。同样地，效率最高的F和G也需要注意提高乘客满意度，
+同时要注意及时发现问题、解决问题，以巩固其市场绩效和企业认可度。
+
+\SUB{4\ \ 结束语}%一级标题
+本文以2011年上半年南京市公交企业的运营数据为例，在建立了一套兼顾城市公共交通公益性和商业性的指标体系基础上，
+采用基于DEA-Gini准则方法得到客观的绩效评价结果。结果表明，该方法所得的结果是客观的，在总体上与传统的DEA方法一致，能够反映各企业的总体排序趋势，
+但是在效率值比较接近的公交企业间，其效率值排序可能会出现较明显的差异。降低了传统DEA方法受指标权重空间影响太大的缺陷和风险，
+对城市公共交通企业改进绩效方向具有指导作用，有利于促进其服务质量的改善，以提高乘客满意度，
+进而有利于``优先发展城市公共交通"战略的顺利实施和公交企业市场表现的改善。
+
+
+
+%%%%%%%%%%%%%%%%%%%%%参考文献%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\REFERENCE
+
+{\small \baselineskip 12pt
+%注意: 所英文文献作者名应按照"姓"在前"名"("名"要缩写)在后书写.
+%参考文献在文中的引用采用顺序编码制，文中引用不用\cite格式，用， 如： $^{[1]}$。
+
+
+\REF{[1]}
+Charnes A, Cooper W W, Rhodes E. Measuring the efficiency of decision making units [J]. European Journal of Operational Research, 1978, 2(6): 429-444.
+\REF{[2]}
+Li Y J, Yang F, Liang L, Hua Z S. Allocating the fixed cost as a complement of other cost inputs: A DEA approach [J]. European Journal of Operational Research, 2009, 197(1): 389-401.
+\REF{[3]}
+Brockett P L, Charnes A, Cooper W W, Huang Z M, Sun D B, Data transformations in DEA cone ratio envelopment approaches for monitoring bank performances [J], European Journal of Operational Research, 1997, 98, 250-268.
+\REF{[4]}
+Cooper W W, Deng H, Gu B, Li S and Thrall R M, Using DEA to improve the management of congestion in Chinese industry (1981-1997) [J], Socio-Economic Planning Sciences, 2001a, 35, 1-16.
+\REF{[5]}
+Zhao Y, Triantis K, Murray-Tuite P, and Edara P. Performance measurement of a transportation network with a downtown space reservation system: A network-DEA approach [J]. Transportation Research Part E, 2011, 47: 1140-1159.
+\REF{[6]}
+Lao Y, Liu L. Performance evaluation of bus lines with data envelopment analysis and geographic information systems [J]. Computers, Environment and Urban Systems, 2009, 33: 247-255.
+\REF{[7]}
+武荣桢, 翟栋栋, 郗恩崇, 李丽. 城市公共交通服务满意度评价模型[J]. 交通运输工程学报, 2009, 9(4): 65-70.
+Wu R Z, Zhai D D, Xi E C, Li L. Evaluation model of satisfaction degree for urban public transit service [J]. Journal of Traffic and Transportation Engineering, 2009, 9(4): 65-70.
+\REF{[8]}
+纪嘉伦, 李福志, 沈彩霞, 向凯. 铁路保价运输管理与服务质量评价指标体系[J]. 系统工程理论与实践, 2001, 6: 114-117.
+Ji J L, Li F Z, Shen C X, Xiang K. The Evaluation Indices System for the Management and Service Quality of Railway Transportation of Insurance Amount [J]. Systems Engineering-theory \& Practice, 2001, 6: 114-117.
+\REF{[9]}
+纪嘉伦, 李福志. 城市轨道交通线网规划方案综合评价指标体系研究[J]. 系统工程理论与实践, 2004, 3: 129-133.
+Ji J L, Li F Z. A Study on the Synthetic Evaluation Index System of Urban Rail Transit Line Network Planning Scheme [J]. Systems Engineering-theory \& Practice, 2004, 3: 129-133.
+\REF{[10]}
+Nunamaker T R. Using data envelopment analysis to measure the efficiency of non-profit organizations: A critical evaluation. Managerial and Decision Economics [J]. 1985, 6(1): 50-58.
+\REF{[11]}
+Cinca S, Molinero C M. Selecting DEA specifications and ranking units via PCA [J]. Journal of the Operational Research Society. 2004, 55(5): 521-528
+\REF{[12]}
+Jenkins L, Anderson M. A multivariate statistical approach to reducing the number of variables in data envelopment analysis [J]. European Journal of Operation Research. 2003, 147: 51-61.
+\REF{[13]}
+Friedman, Sinuany-Stern. Combining ranking scales and selecting variables in the DEA context: the case of industrial branches [J]. Computers and Operations Research, 1998, 25(9): 781-791.
+\REF{[14]}
+Pastor J T, Ruiz J L, Sirvent I. A statistical test for nested radial DEA models [J]. Operations Research. 2002, 50(4): 728-735.
+\REF{[15]}
+Breiman L, Friedman J, Stone Ch J, Olshen R A. Classification and Regression Trees [M]. New York: Chapman\&Hall/CRC, 1983.
+\REF{[16]}
+Dai Q Z, et. al. Improve the Discriminatory Power of DEA Via Gini Criterion [J]. Expert Systems with Applications, working paper.
+\REF{[17]}
+Banker R D, Charnes A, Cooper W W. Some models for estimating technical and scale inefficiencies in data envelopment analysis [J]. Management Science. 1984, 30 (8): 1078-1092.
+\REF{[18]}
+刘宏伟, 齐二石. 基于AHP-FCE法的管理咨询企业顾客满意度研究[J]. 科技进步与对策，2010, 27(12): 116-119.
+Liu H W, Qi E S. Study on Customer Satisfaction of Management Consulting Enterprises Based on AHP-FCE [J]. Science \& Technology Progress and Policy, 2010, 27(12): 116-119.
+\REF{[19]}
+Anderson E W, Fomel C, Lehmann D R. Customer satisfaction，market share and profitability：Findings from Sweden [J]. J. Marketing, 1994, 58: 53-66．
+\REF{[20]}
+林盛, 刘金兰, 韩文秀. 基于PLS-结构方程的顾客满意度评价方法[J]. 系统工程学报, 2005, 20(6): 653-656.
+Lin S, Liu J L, Han W X. Method on customer satisfaction assessment based on the partial least square for structural equation [J]. Journal of Systems Engineering, 2005, 20(6): 653-656.
+
+\end{document}
+
+
+\multirow{2}*{活动名称}%表格行中的内容上下居中.
+\cmidrule(r){3--4}%表格划线中间断开

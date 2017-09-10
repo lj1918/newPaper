@@ -1,0 +1,80 @@
+% !Mode::"Tex:UTF-8"
+
+\documentclass[a4paper]{article}
+\usepackage{ctex}
+\author{刘军(NUFE,210042)}
+\date{}
+\title{基于壳向量支持向量机的增量式苹果香精鉴别方法研究 }
+\usepackage{amssymb}    %使用宏包{美国数学协会符号}
+\usepackage{amsmath}
+\usepackage{multirow}
+% 插图包,两个图并排
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+\begin{document}
+\maketitle
+\section{I.	引言}
+香精是从带香物质中提取或人工合成的至香物质，根据香精的来源，可以将其分为天热香料和合成香料。合成香精因配方可控、成本较低而被食品工业广泛使用，以改善或强化食品的香味。目前对香精的质量监控主要通过光指数、相对密度、酸度值、挥发成分总量等理化指标及感官评价来进行。前者只能反映香精的某些特性，且有检测内容多、操作复杂、检测时间长、效率低等缺点；而后者以鼻感作为识别工具，易受操作人员和环境等因素的影响，难以准确反映香精的内在质量及其波动。目前市场上天然香精有3000多种，合成香精有6000多种，采用传统的检测手段对香精产品的质量进行实时监控。
+
+拉曼光谱是近年来蓬勃发展起来的一种快速检测手段，有快速、高效、无污染、无需前处理、无损分析等优点，许多领域得到广泛的应用。Paradkar等[]利用傅里叶拉曼光谱获得了甘蔗糖、甜菜糖的拉曼光谱。采用偏最小二乘和主成分回归对掺杂在枫树糖浆中的甘蔗糖和甜菜糖含量进行建模。Beattie等[]对四种不同的动物食品（鸡肉、牛肉、羊肉和猪肉）采用多种建模方法进行了定量分析和判别。李卿等[]提出了一种新的拉曼光谱去噪方法—经验模态分解阈值去噪法，分析了在不同噪声水平上经验模态分解阈值法对二甲苯的拉曼光谱处理的效果。
+
+本文利用结合了壳向量的增量SVM算法，结合拉曼光谱，构建了一种快速鉴别方法。
+，并且从产品质量控制的角度，迫切需要一种稳定、可靠的快速检测方法对香精的产品质量进行监控。
+
+
+目前，
+
+拉曼光谱是近年来蓬勃发展起来的一种快速检测手段，有快速、高效、无污染、无需前处理、无损分析等优点，许多领域得到广泛的应用。
+\section{I.	材料与方法}
+\subserction{样本来源}
+27个合成苹果香精样品由国内三家著名食用香精香料公司提供。其中每家公司采购9个品种，3个批次的样本。具体信息如表1所示：
+
+\begin{table}{h} %开始一个表格environment，表格的位置是h,here
+  \centering
+  \caption{Detailed information of the investigated apple essences}\label{a}
+  \begin{tabular}{c|c|l}
+
+     \hline
+     % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+     flavor companies       & no.       & solvent \\
+     \hline
+     \multirow{3}{*}{A}       & S         & ethanol \\
+     \cline{2-3}
+                              & Q         & ethanol \\
+     \cline{2-3}
+                              & I         & 1,2 propanediol \\
+     \hline
+     \multirow{3}{*}{B}       & a         & 1,2 propanediol \\
+     \cline{2-3}
+                              & b         & ethanol,1,2 propanediol \\
+     \cline{2-3}
+                              & c         & 1,2 propanediol,water \\
+     \hline
+     \multirow{3}{*}{C}       & d         & 1,2 propanediol \\
+     \cline{2-3}
+                              & e         & ethanol \\
+     \cline{2-3}
+                              & f         & 1,2 propanediol \\
+     \hline
+   \end{tabular}
+
+\end{table}
+
+\section{II.结果与分析}
+
+\section{III.结论}
+
+
+\renewcommand\refname{References}
+\begin{thebibliography}{99}
+    \bibitem{Vapnik}V.N. Vapnik, The Nature of Statistical Learning Theory, Springer, New York,1995, 8 (6) :988 - 999
+    \bibitem{Stefan}Stefan Ruping,Incremental Learning with Support Vector Machines,Technical Reports,2001,228(4):641-642
+    \bibitem{XIAORong}XIAO Rong, WANG Ji-cheng, SUN Zheng-xing. Anapproach to incremental SVM learning algorithm.Journal of Nanjing University, 2002, 38(2): 152 157.
+    \bibitem{Zhu X}Zhu X, Lafferty J, Ghahramani Z. Combining active learning and semi-supervised learning using Gaussian fields  and  harmonic  functions[C].  In:  Proc  of  ICML  2003  Workshop  on  the  Continuum  from  Labeled  to Unlabeled Data. Menlo Park, CA:AAAI Press,2003:58-65.
+    \bibitem{yunjungShin}Hyunjung Shin, Sungzoon Cho, Invariance of neighborhood relation underinput space to feature space mapping, Pattern Recognition Letters, 26 (2005)707–718.
+    \bibitem{YJLee}Y.J. Lee, S.Y. Huang, Reduced support vector machines: a statistical theory,IEEE Transactions on Neural Networks 18 (No.1) (2007) 1–13.
+\end{thebibliography}
+
+
+\end{document}

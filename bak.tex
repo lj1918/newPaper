@@ -1,0 +1,130 @@
+% !Mode::"Tex:UTF-8"
+
+\documentclass{article}
+\usepackage{ctex}
+\author{"刘军"}
+\title{Incremental learning for Fast Discrimination of complex compound base on SVM and convex hull vectors }
+\usepackage{amssymb}    %使用宏包{美国数学协会符号}
+\usepackage{amsmath}
+% 页面设置
+\usepackage[top=2.54cm,bottom=2.54cm,left=3.18cm,right=3.18cm]{geometry}
+% 页眉页脚设置
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{abc}
+\chead{\thesection}
+\cfoot{\thepage}
+% 插图包,两个图并排
+\usepackage{graphicx}
+\usepackage{subfigure}
+\begin{document}
+\maketitle
+
+Abstract:using new samples to improve the accurate of classification for complex compound such as apple essence is a key aspect for rapidly and accurate determination in online detection.In this paper,a novel methodology is proposed,which involves two crucial aspects in the context of the use of online data in classification for complex compound:i)the method of the complex compound resolution for online data by incremental learning algorithm based on Hull vector;and ii)the selection of the most appropriate spectroscopy,taking into account both 识别风险 和 代价、分辨率等.Both Raman and ion mobility spectrometry (IMS) had the advantages of easy operation and  quick  analysis.It was shown that the identification accuracy rate of the Raman spectroscopy for nine kinds of apple essences was 98.35\%,which is higher then that of the IMS.The results from this study demonstrated that the Raman spectroscopy combined with incremental learning algorithm can be used as a reliable,stable and fast new method to discriminate among complex compound.
+
+
+Key words:Apple Essences;Incremental Learning;Convex hull;SVM;discrimination
+%=============第一部分 简介===================
+\section{I. Introduction}
+
+    \subsection{discrimination of complex compound}
+
+    
+    \subsection{Incremental Learning Base on SVM}
+Support Vector Machines$ ^{\cite{bibitem1}}$ have been successfully used for machine learning with large and high dimensional data sets. This is due to the fact that the generalization property of an SVM does not depend on the complete the training data but only a subset thereof, the so called support vectors.However,its long training time and huge memory requirement for large learning tasks are its major drawbacks.
+
+SVM classifiers of the form $f(x)=W\cdot\Phi(x)+b$ are learned from the data $\{ (x_i,y_i)\in\ \mathbb{IR}^m \times \{ -1, 1 \} ,\forall i \in \{ 1,\cdots,N \} \}$ by minimizing
+% 公式1
+% \符号可以用来半个空格
+\begin{equation}
+\min \limits_{w,b,\xi} \ \ \frac{1}{2}||w||^2+C\sum^{N} \limits_{i=1}\xi^p_i \tag{1}
+\end{equation}
+
+
+$$
+s.t. \ \ y_i(w^T x_i + b)\geq 1-\xi_i,
+$$
+$$
+\ \ \ \ \xi_i \geq  0 \ ,\forall \ i \in \{1,\cdots,m\} 
+$$
+
+To simplify matters,the quadratic program is typically expressed in its dual form
+% 公式2
+\begin{equation}
+\max_a  \sum_{i=1}\limits^{m} \alpha_i - \frac{1}{2} \sum \limits^{m} \limits_{i=1} \sum \limits^{m} \limits_{j=1} \alpha_i \alpha_j y_i y_j x_i^T x_j \tag{2}
+\end{equation}
+
+$$
+s.t. \ \ \sum \limits_{i=1} \limits^{m} \alpha_i y_i = 0 ,
+$$
+$$
+     \qquad \qquad \qquad \qquad \qquad 0\leq \alpha_i \leq C, ,\forall \ i \in \{1,\cdots,m\} 
+$$
+
+
+
+with Lagrange multiplier,offset $b$ and $Q_{ij}=y_i y_i \Phi(x_i) \cdot \Phi(x_j)$. The resulting dual form of the SVM is then $f(x)=\sum^N \limits_{i=1} y_i \alpha_i \Phi(x_i) \cdot \Phi(X) + b$. Using kernel function $K(x,y)=\Phi(X) \cdot \Phi(y)$ to implicitly map into a higher dimensional feature space and compute the dot product.
+
+Training an SVM "incrementally" on new data by discarding all previous data except their support vectors, gives only approximate results 
+
+
+%=============第二部分 实验与材料===================
+\section{II.Experiments and Materials}
+
+中文测试
+
+
+%=============第三部分 数据分析===================
+\section{III. Data Analysis}
+
+
+
+%=============第四部分 结果与分析===================
+\section{IV. Result and Discussion}
+
+\begin{figure}[h]
+  \subfigure[螺丝钉解放垃圾发电]{
+    \begin{minipage}{6cm}
+    \centering
+        \includegraphics[width=9cm,height=6cm]{figure_3}
+     \end{minipage}
+  }
+  \subfigure[scatter plot]{
+    \begin{minipage}{6cm}
+    \centering
+        \includegraphics[width=9cm,height=6cm]{figure_2}
+     \end{minipage}
+  }
+  \caption{并排图}
+\end{figure}
+
+
+\begin{figure}[h]
+  \subfigure[螺丝钉解放垃圾发电]{
+    \begin{minipage}{6cm}
+    \centering
+        \includegraphics[width=9cm,height=6cm]{figure_3}
+     \end{minipage}
+  }
+  \subfigure[scatter plot]{
+    \begin{minipage}{6cm}
+    \centering
+        \includegraphics[width=9cm,height=6cm]{figure_2}
+     \end{minipage}
+  }
+  \caption{并排图}
+\end{figure}
+
+%=============第五部分 结论===================
+\section{V.	Conclusion}
+
+
+\section{References}
+
+\begin{thebibliography}{10}
+    \bibitem{bibitem1}V. Vapnik. Statistical Learning Theory. Wiley, Chichester,GB, 1998.
+    \bibitem{bibitem2}Stefan Ruping,Incremental Learning with Support Vector Machines,Technical Reports,2001,228(4):641-642
+    \bibitem[10]{bibitem10}V. Vapnik. Statistical Learning Theory. Wiley, Chichester,GB, 1998.
+\end{thebibliography}
+\end{document}
+

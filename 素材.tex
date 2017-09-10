@@ -1,0 +1,257 @@
+% !Mode::"Tex:UTF-8"
+
+\documentclass{article}
+\usepackage{ctex}
+\author{"刘军"}
+\title{Incremental learning for Fast Discrimination of complex compound base on SVM and convex hull vectors }
+\usepackage{amssymb}    %使用宏包{美国数学协会符号}
+\usepackage{amsmath}
+% 页面设置
+\usepackage[top=2.54cm,bottom=2.54cm,left=3.18cm,right=3.18cm]{geometry}
+% 页眉页脚设置
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{abc}
+\chead{\thesection}
+\cfoot{\thepage}
+% 插图包,两个图并排
+\usepackage{graphicx}
+\usepackage{subfigure}
+\begin{document}
+\maketitle
+
+Abstract:using new samples to improve the accurate of classification for complex compound such as apple essence is a key aspect for rapidly and accurate determination in online detection.In this paper,a novel methodology is proposed,which involves two crucial aspects in the context of the use of online data in classification for complex compound:i)the method of the complex compound resolution for online data by incremental learning algorithm based on Hull vector;and ii)the selection of the most appropriate spectroscopy,taking into account both 识别风险 和 代价、分辨率等.Both Raman and ion mobility spectrometry (IMS) had the advantages of easy operation and  quick  analysis.It was shown that the identification accuracy rate of the Raman spectroscopy for nine kinds of apple essences was 98.35\%,which is higher then that of the IMS.The results from this study demonstrated that the Raman spectroscopy combined with incremental learning algorithm can be used as a reliable,stable and fast new method to discriminate among complex compound.
+
+
+Key words:Apple Essences;Incremental Learning;Convex hull;SVM;discrimination
+%=============第一部分 简介===================
+\section{I. Introduction}
+
+    \subsection{discrimination of complex compound}
+
+
+    \subsection{Incremental Learning Base on SVM}
+
+公式1
+% \符号可以用来半个空格
+\begin{equation}
+\min \limits_{w,b,\xi} \ \ \frac{1}{2}||w||^2+C\sum^{N} \limits_{i=1}\xi^p_i \tag{1}
+\end{equation}
+
+
+$$
+s.t. \ \ y_i(w^T x_i + b)\geq 1-\xi_i,
+$$
+$$
+\ \ \ \ \xi_i \geq  0 \ ,\forall \ i \in \{1,\cdots,N\}
+$$
+
+需要对齐的长公式可以用split 环境，它本身不能单独使用，因此也
+称作次环境，必须包含在equation 或其它数学环境内。split 环境用$\setminus\setminus$
+和\& 来分行和设置对齐位置。
+
+\begin{multline}\label{1}
+\begin{split}
+  &\min \limits_{w,b,\xi} \ \ \frac{1}{2}||w||^2+C\sum^{N} \limits_{i=1}\xi^p_i \\
+  s.t. & y_i(w^T x_i + b)\geq 1-\xi_i,\\
+       &\xi_i \geq  0 \ ,\forall \ i \in \{1,\cdots,N\}
+\end{split}
+\end{multline}
+
+To simplify matters,the quadratic program is typically expressed in its dual form
+% 公式2
+\begin{equation}
+\max_a  \sum_{i=1}\limits^{m} \alpha_i - \frac{1}{2} \sum \limits^{m} \limits_{i=1} \sum \limits^{m} \limits_{j=1} \alpha_i \alpha_j y_i y_j \phi(x_i)^T \phi(x_j) \tag{2}
+\end{equation}
+
+Support vector machine use kernel function  $K(x,y)= \langle\phi(x) , \phi(y)\rangle =\phi(x) \cdot \phi(y) = \phi(x)^T  \phi(y)$  to instead of point multiply in high dimensional feature space, perfectly solving the dimension problem.Using kernel function $K(x,y)= \langle\phi(x) , \phi(y)\rangle =\phi(x) \cdot \phi(y) = \phi(x)^T  \phi(y)$ to implicitly map into data a higher dimensional feature space and compute the dot product.The resulting form of SVM is :
+
+
+%=============第二部分 实验与材料===================
+\section{II.Experiments and Materials}
+
+中文测试
+\begin{eqnarray}
+    % \nonumber to remove numbering (before each equation)
+      (a + b)^3  &= (a + b) (a + b)^2        \\
+             &= (a + b)(a^2 + 2ab + b^2) \\
+             &= a^3 + 3a^2b + 3ab^2 + b^3
+\end{eqnarray}
+
+\begin{align}label{10}
+  (a + b)^3  &= (a + b) (a + b)^2        \\
+             &= (a + b)(a^2 + 2ab + b^2) \\
+             &= a^3 + 3a^2b + 3ab^2 + b^3
+\end{align}
+
+\begin{align}
+  x^2  + y^2 & = 1                       \\
+  x          & = \sqrt{1-y^2}
+\end{align}
+This example has two column-pairs.
+\begin{align}    \text{Compare }
+  x^2 + y^2 &= 1               &
+  x^3 + y^3 &= 1               \\
+  x         &= \sqrt   {1-y^2} &
+  x         &= \sqrt[3]{1-y^3}
+\end{align}
+This example has three column-pairs.
+\begin{align}
+    x    &= y      & X  &= Y  &
+      a  &= b+c               \\
+    x'   &= y'     & X' &= Y' &
+      a' &= b                 \\
+  x + x' &= y + y'            &
+  X + X' &= Y + Y' & a'b &= c'b
+\end{align}
+
+This example has two column-pairs.
+\begin{flalign}  \text{Compare }
+  x^2 + y^2 &= 1               &
+  x^3 + y^3 &= 1               \\
+  x         &= \sqrt   {1-y^2} &
+  x         &= \sqrt[3]{1-y^3}
+\end{flalign}
+This example has three column-pairs.
+\begin{flalign}
+    x    &= y      & X  &= Y  &
+      a  &= b+c               \\
+    x'   &= y'     & X' &= Y' &
+      a' &= b                 \\
+  x + x' &= y + y'            &
+  X + X' &= Y + Y' & a'b &= c'b
+\end{flalign}
+
+This example has two column-pairs.
+\renewcommand\minalignsep{0pt}
+\begin{align}    \text{Compare }
+  x^2 + y^2 &= 1               &
+  x^3 + y^3 &= 1              \\
+  x         &= \sqrt   {1-y^2} &
+  x         &= \sqrt[3]{1-y^3}
+\end{align}
+This example has three column-pairs.
+\renewcommand\minalignsep{15pt}
+\begin{flalign}
+    x    &= y      & X  &= Y  &
+      a  &= b+c              \\
+    x'   &= y'     & X' &= Y' &
+      a' &= b                \\
+  x + x' &= y + y'            &
+  X + X' &= Y + Y' & a'b &= c'b
+\end{flalign}
+
+\renewcommand\minalignsep{2em}
+\begin{align}
+  x      &= y      && \text{by hypothesis} \\
+      x' &= y'     && \text{by definition} \\
+  x + x' &= y + y' && \text{by Axiom 1}
+\end{align}
+
+\begin{equation}
+\begin{aligned}
+  x^2 + y^2  &= 1               \\
+  x          &= \sqrt{1-y^2}    \\
+ \text{and also }y &= \sqrt{1-x^2}
+\end{aligned}               \qquad
+\begin{gathered}
+ (a + b)^2 = a^2 + 2ab + b^2    \\
+ (a + b) \cdot (a - b) = a^2 - b^2
+\end{gathered}      \end{equation}
+
+\begin{equation}
+\begin{aligned}[b]
+  x^2 + y^2  &= 1               \\
+  x          &= \sqrt{1-y^2}    \\
+ \text{and also }y &= \sqrt{1-x^2}
+\end{aligned}               \qquad
+\begin{gathered}[t]
+ (a + b)^2 = a^2 + 2ab + b^2    \\
+ (a + b) \cdot (a - b) = a^2 - b^2
+\end{gathered}
+\end{equation}
+\newenvironment{rcase}
+    {\left.\begin{aligned}}
+    {\end{aligned}\right\rbrace}
+
+\begin{equation*}
+  \begin{rcase}
+    B' &= -\partial\times E          \\
+    E' &=  \partial\times B - 4\pi j \,
+  \end{rcase}
+  \quad \text {Maxwell's equations}
+\end{equation*}
+
+\begin{equation} \begin{aligned}
+  V_j &= v_j                      &
+  X_i &= x_i - q_i x_j            &
+      &= u_j + \sum_{i\ne j} q_i \\
+  V_i &= v_i - q_i v_j            &
+  X_j &= x_j                      &
+  U_i &= u_i
+\end{aligned} \end{equation}
+
+\begin{align}
+  A_1 &= N_0 (\lambda ; \Omega')
+         -  \phi ( \lambda ; \Omega')   \\
+  A_2 &= \phi (\lambda ; \Omega')
+            \phi (\lambda ; \Omega)     \\
+\intertext{and finally}
+  A_3 &= \mathcal{N} (\lambda ; \omega)
+\end{align}
+
+
+%=============第三部分 数据分析===================
+\section{III. Data Analysis}
+
+
+
+%=============第四部分 结果与分析===================
+\section{IV. Result and Discussion}
+
+\begin{figure}[h]
+  \subfigure[螺丝钉解放垃圾发电]{
+    \begin{minipage}{6cm}
+    \centering
+        \includegraphics[width=9cm,height=6cm]{figure_3}
+     \end{minipage}
+  }
+  \subfigure[scatter plot]{
+    \begin{minipage}{6cm}
+    \centering
+        \includegraphics[width=9cm,height=6cm]{figure_2}
+     \end{minipage}
+  }
+  \caption{并排图}
+\end{figure}
+
+
+\begin{figure}[h]
+  \subfigure[螺丝钉解放垃圾发电]{
+    \begin{minipage}{6cm}
+    \centering
+        \includegraphics[width=9cm,height=6cm]{figure_3}
+     \end{minipage}
+  }
+  \subfigure[scatter plot]{
+    \begin{minipage}{6cm}
+    \centering
+        \includegraphics[width=9cm,height=6cm]{figure_2}
+     \end{minipage}
+  }
+  \caption{并排图}
+\end{figure}
+
+%=============第五部分 结论===================
+\section{V.	Conclusion}
+
+
+\section{References}
+
+\begin{thebibliography}{10}
+    \bibitem{bibitem1}V. Vapnik. Statistical Learning Theory. Wiley, Chichester,GB, 1998.
+    \bibitem{bibitem2}Stefan Ruping,Incremental Learning with Support Vector Machines,Technical Reports,2001,228(4):641-642
+    \bibitem[10]{bibitem10}V. Vapnik. Statistical Learning Theory. Wiley, Chichester,GB, 1998.
+\end{thebibliography}
+\end{document}
+

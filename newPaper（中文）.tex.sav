@@ -1,0 +1,45 @@
+% !Mode::"Tex:UTF-8"
+
+\documentclass[a4paper]{article}
+\usepackage{ctex}
+\author{刘军(NUFE,210042)}
+\date{}
+\title{基于壳向量支持向量机的增量式苹果香精鉴别方法研究 }
+\usepackage{amssymb}    %使用宏包{美国数学协会符号}
+\usepackage{amsmath}
+\usepackage{multirow}
+% 插图包,两个图并排
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+\begin{document}
+\maketitle
+\section{I.	引言}
+香精是从带香物质中提取或人工合成的至香物质，根据香精的来源，可以将其分为天热香料和合成香料。合成香精因配方可控、成本较低而被食品工业广泛使用，以改善或强化食品的香味。目前对香精的质量监控主要通过光指数、相对密度、酸度值、挥发成分总量等理化指标及感官评价来进行。前者只能反映香精的某些特性，且有检测内容多、操作复杂、检测时间长、效率低等缺点；而后者以鼻感作为识别工具，易受操作人员和环境等因素的影响，难以准确反映香精的内在质量及其波动。目前市场上天然香精有3000多种，合成香精有6000多种，采用传统的检测手段对香精产品的质量进行实时监控。
+
+拉曼光谱是近年来蓬勃发展起来的一种快速检测手段，有快速、高效、无污染、无需前处理、无损分析等优点，许多领域得到广泛的应用。用拉曼光谱结合偏最小二乘法对特级初榨橄榄油的游离脂肪酸进行定量分析，型预测效果良好
+
+本文利用结合了壳向量的增量SVM算法，结合拉曼光谱，构建了一种快速鉴别方法。
+，并且从产品质量控制的角度，迫切需要一种稳定、可靠的快速检测方法对香精的产品质量进行监控。
+
+
+目前，
+
+拉曼光谱是近年来蓬勃发展起来的一种快速检测手段，有快速、高效、无污染、无需前处理、无损分析等优点，许多领域得到广泛的应用。
+\section{I.	材料与方法}
+\section{II.结果与分析}
+\section{III.结论}
+
+
+\renewcommand\refname{References}
+\begin{thebibliography}{99}
+    \bibitem{Vapnik}V.N. Vapnik, The Nature of Statistical Learning Theory, Springer, New York,1995, 8 (6) :988 - 999
+    \bibitem{Stefan}Stefan Ruping,Incremental Learning with Support Vector Machines,Technical Reports,2001,228(4):641-642
+    \bibitem{XIAORong}XIAO Rong, WANG Ji-cheng, SUN Zheng-xing. Anapproach to incremental SVM learning algorithm.Journal of Nanjing University, 2002, 38(2): 152 157.
+    \bibitem{Zhu X}Zhu X, Lafferty J, Ghahramani Z. Combining active learning and semi-supervised learning using Gaussian fields  and  harmonic  functions[C].  In:  Proc  of  ICML  2003  Workshop  on  the  Continuum  from  Labeled  to Unlabeled Data. Menlo Park, CA:AAAI Press,2003:58-65.
+    \bibitem{yunjungShin}Hyunjung Shin, Sungzoon Cho, Invariance of neighborhood relation underinput space to feature space mapping, Pattern Recognition Letters, 26 (2005)707–718.
+    \bibitem{YJLee}Y.J. Lee, S.Y. Huang, Reduced support vector machines: a statistical theory,IEEE Transactions on Neural Networks 18 (No.1) (2007) 1–13.
+\end{thebibliography}
+
+
+\end{document}
