@@ -27,6 +27,8 @@
 
 Abstract:using new samples to improve the accurate and speed of classification for essence such as apple essence is a key aspect for rapid and accurate determination in online test.In this paper,a novel method for SVM classification ,which extends the traditional SVM method with Principal Component Analysis method and convex hull algorithm to construct the PCA-CH-SVM model,combined with Raman spectra for fast discrimination of apple essence.In this regard,PCA-CH-SVM built on a convex hull of support vectors and new Raman spectra data to classify the apple essence based on features obtained from Raman spectra.The classification model have been evaluated with 10-fold cross validation.The results from this study demonstrated that our approach has good classiﬁcation accuracy while the training is signiﬁcantly faster than normal SVM classiﬁers.
 
+One of key aspects in rapid discrimination 
+
 
 
 Key words:Apple Essences;Convex hull vector; SVM ; rapidly discrimination
@@ -124,22 +126,26 @@ CH(X) :\{ \omega = \sum_{i=1} ^{n} \alpha_i x_i, \alpha_i \geq 0, \sum_{i=1} ^{n
 $$
 
 Basically SVM classification can be grouped into two types: linearly separable and linearly inseparable cases. The nonlinear separation can be transformed into linear case via a kernel function to transform the original space to a higher-dimensional space, and a hyper plane is constructed in the higher-dimensional space to solve problems of nonlinear separable classification in the original low-dimensional space.
- 
+
  In linear separable case:existing history training data set X,it can be divided into two categories: $X^{+}$ and $X^{-}$
 $$
 CH(X^{+}) \bigcap CH(X^{-}) = \varnothing
 $$
-
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=9cm,height=6cm]{算法示意图}
+  \caption{Gneral process of the method}
+\end{figure}
 In this work,a Convex Hull SVM algorithm was attempted for classification due to its good incremental learning.The procedure is summarized as follows:\\
 \begin{enumerate}
 \item for data set$A^{+}$ and $A^{-}$,Compute the convex hull vector set $A ^{+}_{H_{V}}$ and $A^{-}_{H_{V}}$, $A_{H_{V}} = A ^{+}_{H_{V}} + A ^{-}_{H_{V}} $
 \item use $A_{H_{V}}$ as train data set, train SVM model,and get support vectors $A_{S_{V}}$ \\
 \item add the new train data set B,make $A = B \bigcup A_{H_{V}}$ as new train data set,get new $A^{+} = A^{+} _{H_{V}} + B^{+}$ and $A^{-} =  A^{-} _{H_{V}} + B^{-}$,then calculate the new hull vector set  $A_{H_{V}} = A ^{+}_{H_{V}} + A ^{-}_{H_{V}} $\\
-\item as hull vector set $A_{H_{V}}$ as train data set to train SVM model,and get support vector set $A_{S_{V}}$ ,then get the classifer.    
+\item as hull vector set $A_{H_{V}}$ as train data set to train SVM model,and get support vector set $A_{S_{V}}$ ,then get the classifer.
 \end{enumerate}
 
 1.for data set$A^{+}$ and $A^{-}$,Compute the convex hull vector set $A ^{+}_{H_{V}}$ and $A^{-}_{H_{V}}$, $A_{H_{V}} = A ^{+}_{H_{V}} + A ^{-}_{H_{V}} $
-2.use $A_{H_{V}}$ as train data set, train SVM model,and get support vectors $A_{S_{V}}$ 
+2.use $A_{H_{V}}$ as train data set, train SVM model,and get support vectors $A_{S_{V}}$
 3.add the new train data set B,make $A = B \bigcup A_{H_{V}}$ as new train data set,get new $A^{+} = A^{+} _{H_{V}} + B^{+}$ and $A^{-} =  A^{-} _{H_{V}} + B^{-}$,then calculate the new hull vector set  $A_{H_{V}} = A ^{+}_{H_{V}} + A ^{-}_{H_{V}} $
 4.as hull vector set $A_{H_{V}}$ as train data set to train SVM model,and get support vector set $A_{S_{V}}$ ,then get the classifer.
 Repeat steps 3) and 4 enable continuous incremental learning of new samples.
