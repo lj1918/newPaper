@@ -106,6 +106,9 @@ Principal components analysis(PCA)  is  a  method  for  the  re-expressing  mult
 The number of the generated features was still quite large for  the  classifier.  So  PCA  was  used  to  perform  feature reduction  before  pattern  recognition.  Then  standard soft-margin  C-SVM  was  used  for  classification  of  Chinese liquors.
 
 \subsection{Incremental SVM Learning Base on Convex Hull Vector}
+Xiaofei Zhou et al.[xx] applied convex hull sample selection method for SVM on face recognition.As described in this paper,the authors calculated the distance of every candidate to the subclass convex hull of selected subset in high-dimensional feature space.
+
+  
 In the formulation of a SVM,we find that in feature space the decision surface is always an hyerplane,and the classifier is always written in terms of data instances that belongs to the outside of the boundaries of the classes.More secifically,in the separable case,the boundaries of classes contain the instances of solution(support vectors),therefore we only need the points on those boundaries.The boundaries of the data can be obtained from the Convex Hull of each class.In particular,we only need the extreme points(vertices) of the Convex Hull.
 
 
