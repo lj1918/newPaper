@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.7.24)  12 SEP 2017 20:17
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.7.24)  19 SEP 2017 00:45
 entering extended mode
 **newPaper.tex
 (D:\20_同步文件\newPaper\newPaper.tex
@@ -661,12 +661,6 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 
 LaTeX Warning: Label `a' multiply defined.
 
-
-LaTeX Warning: Label `(' multiply defined.
-
-
-LaTeX Warning: Label `(' multiply defined.
-
 )
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
@@ -884,21 +878,6 @@ ar.otf
 Requested font "[lmroman12-bold]:mapping=tex-text" at 14.4pt
  -> C:/Program Files (x86)/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman12-bold.
 otf
-Requested font "SimSun" at 10.0pt
- -> C:/WINDOWS/Fonts/simsun.ttc
-Requested font "SimSun/ICU" at 10.0pt
- -> C:/WINDOWS/Fonts/simsun.ttc
-.................................................
-. fontspec info: "defining-font"
-. 
-. Font family 'SimSun(0)' created for font 'SimSun' with options
-. [Ligatures=TeX,BoldFont={SimHei},ItalicFont={[SIMKAI.TTF]}].
-. 
-. This font family consists of the following shapes:
-.................................................
-Requested font "SimSun/ICU:script=latn;language=DFLT;mapping=tex-text;" at 10.0
-pt
- -> C:/WINDOWS/Fonts/simsun.ttc
 Requested font "[lmroman7-regular]:mapping=tex-text" at 7.0pt
  -> C:/Program Files (x86)/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman7-regula
 r.otf
@@ -921,13 +900,21 @@ Requested font "msbm7" at 7.0pt
  -> msbm7
 Requested font "msbm5" at 5.0pt
  -> msbm5
-
-
-LaTeX Warning: Citation `Jing' on page 1 undefined on input line 37.
-
-
-LaTeX Warning: Citation `Y' on page 1 undefined on input line 37.
-
+Requested font "SimSun" at 10.0pt
+ -> C:/WINDOWS/Fonts/simsun.ttc
+Requested font "SimSun/ICU" at 10.0pt
+ -> C:/WINDOWS/Fonts/simsun.ttc
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'SimSun(0)' created for font 'SimSun' with options
+. [Ligatures=TeX,BoldFont={SimHei},ItalicFont={[SIMKAI.TTF]}].
+. 
+. This font family consists of the following shapes:
+.................................................
+Requested font "SimSun/ICU:script=latn;language=DFLT;mapping=tex-text;" at 10.0
+pt
+ -> C:/WINDOWS/Fonts/simsun.ttc
 
 Overfull \hbox (14.98128pt too wide) in paragraph at lines 37--38
 \EU1/lmr/m/n/10 chromatography-mass spectrometry [5–8] are highly reliable be
@@ -946,73 +933,56 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [2]
 File: HullVector_SupportVector.jpg Graphic file (type QTm)
- <use  "HullVector_SupportVector.jpg" >
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (41.49905pt too wide) in paragraph at lines 122--123
+ <use  "HullVector_SupportVector.jpg" > [3]
+Overfull \hbox (41.49905pt too wide) in paragraph at lines 123--124
 []\EU1/lmr/m/n/10 The convex hull(CH) of a set of points S is the minimum conve
 x set that contains S.Mathematically,CH
  []
 
-[3]
 File: 算法示意图.jpg Graphic file (type QTm)
- <use  "算法示意图.jpg" >
-Underfull \hbox (badness 10000) in paragraph at lines 132--139
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
-
- []
-
-[4]
+<use  "算法示意图.jpg" > [4]
 File: Typical_Raman_spectra.jpg Graphic file (type QTm)
- <use  "Typical_Raman_spectra.jpg" >
+ <use  "Typical_Raman_spectra.jpg" > [5]
+File: Figure_3.png Graphic file (type QTm)
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[5]
-Overfull \hbox (4.28088pt too wide) in paragraph at lines 188--188
-[]|\EU1/lmr/m/n/10 Simulation
- []
-
-
-Overfull \hbox (15.81174pt too wide) in paragraph at lines 190--190
-[]|\EU1/lmr/m/n/10 Initialization(randomly 
+<use  "Figure_3.png" >
+File: Figure_2.png Graphic file (type QTm)
+ <use  "Figure_2.png" >
+Overfull \hbox (10.24472pt too wide) in paragraph at lines 192--193
+ [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Overfull \hbox (4.28088pt too wide) in paragraph at lines 216--216
+[]|\EU1/lmr/m/n/10 Simulation
+ []
+
+
+Overfull \hbox (15.81174pt too wide) in paragraph at lines 218--218
+[]|\EU1/lmr/m/n/10 Initialization(randomly 
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
 []\EU1/lmr/m/n/10 Stefan Ruping,Incremental Learning with Support Vector Machin
 es,Technical
  []
 
-[7] [8] (D:\20_同步文件\newPaper\newPaper.aux)
-
-LaTeX Warning: There were undefined references.
-
+[8] [9] (D:\20_同步文件\newPaper\newPaper.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 16266 strings out of 430478
- 330367 string characters out of 3191002
- 343971 words of memory out of 3000000
- 19183 multiletter control sequences out of 15000+200000
+ 16274 strings out of 430478
+ 330524 string characters out of 3191002
+ 341985 words of memory out of 3000000
+ 19189 multiletter control sequences out of 15000+200000
  10160 words of font info for 62 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,11n,43p,1023b,360s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,11n,43p,1023b,354s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on newPaper.pdf (8 pages).
+Output written on newPaper.pdf (9 pages).

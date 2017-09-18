@@ -26,15 +26,15 @@
 
 Abstract:An important aspect of rapid discrimination of apple essences based on pattern recognition is how to use new training data to improve the accuracy and control the training time. In this paper,In this paper, PCA-CH-SVM method and Raman spectra were used in combination for fast discrimination of apple essences from different brands.PCA-CH-SVM built on a convex hull of support vectors and new Raman spectra data to classify the apple essence based on features obtained from Raman spectra.The classification model have been evaluated with 10-fold cross validation.The results from this study demonstrated that our approach has good classiﬁcation accuracy while the training is signiﬁcantly faster than normal SVM classiﬁers.
 
-In this paper,we proposed a incremental learning algorithm by combining convex-hull svm with PCA,namely PCA-CH-SVM for incremental learning in apple essences discrimination.
+In this paper,we proposed a incremental learning algorithm by combining convex-hull SVM with PCA,namely PCA-CH-SVM for incremental learning in apple essences discrimination.
 
 Key words:Apple Essences;Convex hull vector; SVM ; rapid discrimination
 %=============第一部分 简介===================
 \section{I. Introduction}
     % 苹果香精检测的背景、
-Apple essences are widely used as a food additive in food industry.Rapid identification of apple essence for the food industry's quality control is of great significance.Usually the detection of apple essence is carried out by chemistry-based methods and sensory evaluation.sensory evaluation is the traditional and most commonly used method,but its accuracy and objectivity cannot always be ensured because sensory evaluation staff’s judgement can affected by their health condition, emotions, and the environment.
+Apple essences are widely used as a food additive in food industry.Rapid identification of apple essence for the food industry's quality control is of great significance.Apple essences are a complex mixture of a large number of volatile compounds$^{\cite{Sanz et al.}}$.Usually the detection of apple essence is carried out by chemistry-based methods and sensory evaluation.sensory evaluation is the traditional and most commonly used method,but its accuracy and objectivity cannot always be ensured because sensory evaluation staff’s judgement can affected by their health condition, emotions, and the environment.
 
-These chemistry-based methods such as gas chromatography, mass spectrometry, and gas chromatography-mass spectrometry [5–8] are highly reliable because they use a complete component-by-component approach.However, their shortcomings include excessive test items, being time-consuming,complicated operation, and low capability for insitu and rapid measurements $^{\cite{Jing, Y}}$. Overall, developing a novel, rapid and reliable method to identify  essence is of positive significance.
+These chemistry-based methods such as gas chromatography, mass spectrometry, and gas chromatography-mass spectrometry [5–8] are highly reliable because they use a complete component-by-component approach.However, their shortcomings include excessive test items, being time-consuming,complicated operation, and low capability for insitu and rapid measurements$^{\cite{Jing et al.}}$ . Overall, developing a novel, rapid and reliable method to identify  essence is of positive significance.
 
 Raman spectroscopy is a technique which is arising from inelastic scattering of laser light by the molecular vibration inside the sample. As a result, the scattered photons are emitted with the different frequency or energy. This difference in frequency between incident and emitted protons provides finger print about the rotational, vibrational and other low frequency transitions in molecule. Thus Raman spectrum, which is the plot of intensity as function of Raman shift, is a rapid detection method developed in recent years, with fast, efficient, non-polluting, without pre-treatment, lossless analysis, etc., many areas have been widely used.[拉曼在食品检测中的文献]
 
@@ -97,20 +97,14 @@ Essence contains a large number of volatile, low content components.The complex 
 \subsection{Raman spectrum acquisition}%拉曼光谱的获得
 Raman spectrum for all samples have been acquired with Raman spectrometer(Prott-ezRaman-d3,Enwave Optronics, USA).Raman  signal  is  normally  very  weak  as  compared  to  Rayleigh  scattering,  therefore  an acquisition time of 10 seconds has been used for recording each spectrum.The spectrum from the  sera  samples  have  been  recorded  in  the  spectral  range  of  250 $cm^{−1}$  to  2350 $cm^{−1}$,  as  it contained the most useful information.
 
-\subsection{Data analysis and processing}%
-Raman  spectrum  of  essence samples  is  normally  very  complex  and  rich  of  chemical information.  Since  in essence  samples,  there  exist  different  types  of  functional group compound. The Raman spectrum of each of these compound consists of  numerous peaks.  The  visual  assignment  of  any  particular  peaks  to  a  specific  molecule usually  produces  imprecision  in  the  final  result,  because  most  of  the  time  different molecules  contribute  to  the  same  peak.  In  order  to  overcome  this  limitation  of  visual analysis, statistical methods are mostly used for the interpretation of Raman data of essence samples. With the statistical approach one can extract useful information from the data set by high  lighting  the  similarities  and differences.  In  this  study,  we  are using convex hull SVM  for  the  classification of  apple essence,  in order to efficiently handle large amounts of sample data.
-
-In this study,we used KPCA to remove redundant features and several previous principal components were extracted as the inputs of the classifier for apple essences.
+\subsection{Data preprocessing}%
+In this study,we used PCA to remove redundant features and several previous principal components were extracted as the inputs of the classifier for apple essences.
 Principal components analysis(PCA)  is  a  method  for  the  re-expressing  multivariate  data.   It  allows  the researcher to reorient the data so that the first few dimensions account for as much  of  the  available  information  as  possible.  The  principal  components solution has the property that each component is uncorrelated with all others, which  has  the  advantage  of  eliminating  multicollinearity.
 
-The number of the generated features was still quite large for  the  classifier.  So  PCA  was  used  to  perform  feature reduction  before  pattern  recognition.  Then  standard soft-margin  C-SVM  was  used  for  classification  of  Chinese liquors.
+The number of the generated features was still quite large for  the  classifier.  So  PCA  was  used  to  perform  feature reduction  before  pattern  recognition.  Then  standard soft-margin  SVM  was  used  for  classification  of  apple essences.
 
 \subsection{Incremental SVM Learning Base on Convex Hull Vector}
-Xiaofei Zhou et al.[xx] applied convex hull sample selection method for SVM on face recognition.As described in this paper,the authors calculated the distance of every candidate to the subclass convex hull of selected subset in high-dimensional feature space.
-
-  
-In the formulation of a SVM,we find that in feature space the decision surface is always an hyerplane,and the classifier is always written in terms of data instances that belongs to the outside of the boundaries of the classes.More secifically,in the separable case,the boundaries of classes contain the instances of solution(support vectors),therefore we only need the points on those boundaries.The boundaries of the data can be obtained from the Convex Hull of each class.In particular,we only need the extreme points(vertices) of the Convex Hull.
-
+Reducing training data sets is an effective way to apply SVM classification for large data sets.The geometric properties of SVM can also be used to reduce the training data.The maximum-margin hyperplane is written in terms of data instances that belongs to the outside of the boundaries of the classes.in the separable case,the boundaries of classes contain the instances of solution(support vectors),therefore we only need the points on those boundaries.The boundaries of the data can be obtained from the Convex Hull of each class.
 
 %Once every class convex hulls are represented by samples, the separating hyperplane can be constructed by the nearest point problem. A convex hull of a class can be convex combined by boundary samples or vertices of the convex hull. So using those boundary samples or vertices to train SVM will be equivalent to using all training samples to solve the normal SVM problem.
 
@@ -121,67 +115,98 @@ In the formulation of a SVM,we find that in feature space the decision surface i
   \includegraphics[width=9cm,height=6cm]{HullVector_SupportVector}
   \caption{Relationship between hull vectors and support vectors}
 \end{figure}
+Asdrúbal López Chau et al. $ ^{\cite{Asdrúbal López Chau et al.}}$ proposed convex-concave hull SVM classiﬁer has distinctive advantages on dealing with large data sets with higher accuracy.As described in this paper,the vertices of the convex-concave hull are applied for SVM training with higher accuracy.In this work,a Convex Hull SVM algorithm was used for classification due to its good incremental learning.
+
+Now suppose that $X =\{x_{ij} | i = 1,2,...,c,j=1,2,...,N_i\}$ is the Raman spect data of  apple essences,where c is the apple essences class number,$x_{ij}$ represents the $j$th samples in class $i$,$N_i$ is the number of samples in class i.The overall apple essences sample size is N,which is expressed by
+$$N = \sum _{i=1} ^{c} N_i$$
 
 The convex hull(CH) of a set of points S is the minimum convex set that contains S.Mathematically,CH is defined as:
 $$
 CH(X) :\{ \omega = \sum_{i=1} ^{n} \alpha_i x_i, \alpha_i \geq 0, \sum_{i=1} ^{n} = 1, x_i \in X \}
 $$
 
-Basically SVM classification can be grouped into two types: linearly separable and linearly inseparable cases. The nonlinear separation can be transformed into linear case via a kernel function to transform the original space to a higher-dimensional space, and a hyper plane is constructed in the higher-dimensional space to solve problems of nonlinear separable classification in the original low-dimensional space.
-
- In linear separable case:existing history training data set X,it can be divided into two categories: $X^{+}$ and $X^{-}$
-$$
-CH(X^{+}) \bigcap CH(X^{-}) = \varnothing
-$$
+Firstly, Let's create two subsets $X^+$ and $X^-$ from $X$
+The procedure is summarized as follows:
 \begin{figure}[h]
   \centering
   \includegraphics[width=9cm,height=6cm]{算法示意图}
-  \caption{Gneral process of the method}
+  \caption{Gneral process of the method,take two classes as sample}
 \end{figure}
-In this work,a Convex Hull SVM algorithm was attempted for classification due to its good incremental learning.The procedure is summarized as follows:\\
+
 \begin{enumerate}
-\item for data set$A^{+}$ and $A^{-}$,Compute the convex hull vector set $A ^{+}_{H_{V}}$ and $A^{-}_{H_{V}}$, $A_{H_{V}} = A ^{+}_{H_{V}} + A ^{-}_{H_{V}} $
-\item use $A_{H_{V}}$ as train data set, train SVM model,and get support vectors $A_{S_{V}}$ \\
-\item add the new train data set B,make $A = B \bigcup A_{H_{V}}$ as new train data set,get new $A^{+} = A^{+} _{H_{V}} + B^{+}$ and $A^{-} =  A^{-} _{H_{V}} + B^{-}$,then calculate the new hull vector set  $A_{H_{V}} = A ^{+}_{H_{V}} + A ^{-}_{H_{V}} $\\
-\item as hull vector set $A_{H_{V}}$ as train data set to train SVM model,and get support vector set $A_{S_{V}}$ ,then get the classifer.
+\item Firstly,create subsets $X^i, i= 1,2,...,c$ from $X$.for each class data set $X^{i}$ ,compute the convex hull vector set $X ^{i}_{H_{V}} = CH(X_i)$,then make  $ X_{H_{V}} =X ^{1}_{H_{V}}  \bigcup X ^{2}_{H_{V}} \bigcup ...\bigcup X ^{c}_{H_{V}} $
+
+\item Use $X_{H_{V}}$ as train data set, train SVM model,and get support vectors $X_{S_{V}}$
+
+\item Add the incremental train data set S,splits into subsets $S^i ,( i= 1,2,...,c)$ from $S$.
+make $X^i = S^i \bigcup X^i _{H_{V}}$ ,compute the convex hull vector set $X ^{i}_{H_{V}} = CH(X_i)$
+
+\item As hull vector set $X_{H_{V}}$ as train data set to train SVM model,and get support vector set $X_{S_{V}}$ ,then get the classifier.
+Repeat steps 3) and 4) enable continuous incremental learning of new samples.
 \end{enumerate}
 
-1.for data set$A^{+}$ and $A^{-}$,Compute the convex hull vector set $A ^{+}_{H_{V}}$ and $A^{-}_{H_{V}}$, $A_{H_{V}} = A ^{+}_{H_{V}} + A ^{-}_{H_{V}} $
-2.use $A_{H_{V}}$ as train data set, train SVM model,and get support vectors $A_{S_{V}}$
-3.add the new train data set B,make $A = B \bigcup A_{H_{V}}$ as new train data set,get new $A^{+} = A^{+} _{H_{V}} + B^{+}$ and $A^{-} =  A^{-} _{H_{V}} + B^{-}$,then calculate the new hull vector set  $A_{H_{V}} = A ^{+}_{H_{V}} + A ^{-}_{H_{V}} $
-4.as hull vector set $A_{H_{V}}$ as train data set to train SVM model,and get support vector set $A_{S_{V}}$ ,then get the classifer.
-Repeat steps 3) and 4 enable continuous incremental learning of new samples.
+
 
 %=============第三部分 数据分析===================
 \section{III. Data Analysis}
+
+
 % 拉曼数据分析
 \subsection{Raman spectrum Data analysis}
 Raman spectroscopy can quickly obtain sample information about the functional groups in aromatic compounds,and has significant advantages: sample preparation is simple, measurement usually does not destroy sample, and moisture does not affect test.
 
 Raman spectrum of Apple essence samples is normally very complex and rich of information of functional group of organic compounds.The Raman spectra mainly reflected the solvent information of the essence, and the Raman spectra of the essence with the same solvent are extremely similar and difficult to be identified manually,as shown in Figure 1.The spectra of essences e, Q, and s are similar,and i,a,c,d,f is similar.The spectra B has more peaks,and contains the peaks of the previous two types of spectra.According to the literature[23] and comparison of standards,the spectra of essences e, Q, and s are the peak of
 
+Raman  spectrum  of  essence samples  is  normally  very  complex  and  rich  of  chemical information.  Since  in essence  samples,  there  exist  different  types  of  functional group compound. The Raman spectrum of each of these compound consists of  numerous peaks.  The  visual  assignment  of  any  particular  peaks  to  a  specific  molecule usually  produces  imprecision  in  the  final  result,  because  most  of  the  time  different molecules  contribute  to  the  same  peak.  In  order  to  overcome  this  limitation  of  visual analysis, statistical methods are mostly used for the interpretation of Raman data of essence samples. With the statistical approach one can extract useful information from the data set by high  lighting  the  similarities  and differences.  In  this  study,  we  are using convex hull SVM  for  the  classification of  apple essence,  in order to efficiently handle large amounts of sample data.
 %=============第四部分 结果与分析===================
 \section{IV. Result and Discussion}
-The  model  takes  the  whole  Raman  spectrum  and  selects  discernable  features  from the  spectrum.  Later  on  the  model  uses  those  features  for  predicting  unknown  samples.  The developed model has been evaluated by using 10-fold cross validation approach. It basically divided  the  whole  data  set  into10-subsets.  Each  time  the  model  is  trained  on  9  subsets  and tested  on  the  remaining  one.  The  overall  process  is  repeated  10-times,  to  predict  all  the samples stepwise. The beauty of this method is that it does not care about how the data set are divided, because each data must come k-1 times in the training set and once in test set.
+% 实验结果
+\subsection{Raw data of Characteristic Information}
+% 拉曼光谱的三维图
 \begin{figure}[h]
   \centering
   \includegraphics[width=9cm,height=6cm]{Typical_Raman_spectra}
   \caption{Typical Raman spectra of nine kinds of apple essences}
 \end{figure}
-The overall results for the model with different kernel functions are given in Table 1. The best  performance  has  been  obtained  with  the  polynomial  kernel  function  of  order  1.  The performance  of  a  model  is  usually  evaluated  in  terms  of  accuracy,  precision,  sensitivity  and specificity.  Sensitivity  correctly  sorts  out  all  patients  with  the  disease,  whereas  specificity correctly identifies all patients who do not have that disease [29]. A laboratory test with high specificity and sensitivity is usually desired, but rarely both of these conditions are met at the same time. The aforementioned four parameters for the current SVM model with polynomial kernel function of order 1 have been found 85%, 90%, 73% and 93%, respectively.
+Taking nine kinds of apple essences as example,figure x shows Raman spectra of apple essences.In the range of 1500 ~ 2350 $cm^{-1}$ band, the peak is small and mostly the background peak,so only the Raman spectral data in the 350 ~ 1500 $cm^{-1}$ band is considered for data processing.So the peak corresponding to 350 ~ 1500 $cm^{-1}$ band constitutes a feature vectors with the size of $ 1\times 1150 $.
 
 %不同香精中化学成分及相对含量不尽相同，组分化合物间也会发生不同的缔合作用，
 The chemical components and relative contents of different flavors are different,these will produce different associations,so it  determine the spectral curves of different flavors are somewhat different,and has different  characteristics and fingerprints.The difference between the spectra is the variation of relative intensities of the absorption peaks in the fingerprint region,and the Minute difference in the small peaks in the fingerprint region.Pattern recognition algorithm can maximize the information extracted from the data,and can classify the sample set.
 
 
+\subsection{Apple essences classification}
+    \subsubsection{Data preprocessing results with PCA}
 
+    \begin{figure}[h]
+  \centering
+  \includegraphics[width=10cm,height=6cm]{Figure_3}
+  \caption{ The Classification rate of principal component number }
+\end{figure}
+Taking nine kinds of apple essences as example,figure x shows Raman spectra of apple essences.In the range of $1500 \sim  2350 cm^{-1}$ band, the peak is small and mostly the background peak,so only the Raman spectral data in the $350 \sim 1500 cm^{-1}$ band is considered for data processing.So the peak corresponding to $ 350 \sim 1500 cm^{-1}$ band constitutes a feature vectors with the size of $ 1\times 1150 $.
+The dimension of feature space generated by PCA is not determined by itself, and depended on the final classification rate and efficiency,according to Fig 4, We utilize 8 principal components as feature vectors, thinking of account the balance between efficiency and classification accuracy.
+
+    \subsubsection{Classification result with CH-SVM}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=15cm,height=6cm]{Figure_2}
+  \caption{Typical Raman spectra of nine kinds of apple essences}
+\end{figure}
+
+The CH-SVM algorithm was used to classify the ten brands of apple essences samples. We selected the RBF kernel function in the CH-SVM algorithm, and the kernel parameter was optimized using the Particle Swarm Optimization(PSO) method. To assess the performance of the established classifier, leave-one-out cross-validation and 10-fold cross-validation were conducted. These cross-validations fully assessed the performance of the classification model.
+% CH-SVM分类效果图
+
+
+% 讨论分类效果
+
+
+    \subsubsection{Compare data processing efficiency and accuracy}
+
+
+% 对比不同方法的分类效果
 For comparison, three different algorithms were simulated.Algorithm A uses the standard SVM algorithm, which uses all the samples to solve the support vector for each incremental learning.Algorithm B uses the support vector set instead of the original sample set for incremental learning,Algorithm 2 uses the support vector set instead of the original sample set for incremental learning, that is,using the original classifier support vector set instead of the original sample set, combined with the new sample to be calculated together.Algorithm 3 is a shell vector incremental learning algorithm.The initial sample set is 135 samples randomly selected from all samples, and 70 samples are added for each incremental learning. After each learning, using all 345 samples to check the classification effect.The results are shown in Table 2,after the first to third incremental learning process,Compared with the new shell vector set, the number of shell vectors transformed into non-shell vectors is 14,17,18.
 
-
-
-It can be seen from the simulation results that the SVM incremental learning algorithm based on shell vector is compared with the standard SVM method, which greatly saves the computation time and accelerates the simulation speed, and the classification accuracy is basically the same,the algorithm, that combined the original support vector set with the new sample set rather than an initial sample set,greatly saves the computation time and accelerates the simulation speed, and the classification accuracy is basically the same.Meanwhile, with the continuous learning of incremental learning, the algorithm can naturally make part of the Hull vector into non-Hull vector, to achieve the selective forgetting of the historical data of the training.Therefore, when dealing with a large number of online data set ,the speed advantage of the incremental hull SVM method is more obvious.
-
-\begin{table}[h] %开始一个表格environment，表格的位置是h,here
+    \begin{table}[h] %开始一个表格environment，表格的位置是h,here
   \centering
   \caption{Simulation results after adding group samples}\label{a}
   \begin{tabular}{|p{3.5cm}|c|p{1.5cm}|c|c|c|c|}
@@ -211,22 +236,28 @@ It can be seen from the simulation results that the SVM incremental learning alg
 
 \end{table}
 
+It can be seen from the simulation results that the SVM incremental learning algorithm based on shell vector is compared with the standard SVM method, which greatly saves the computation time and accelerates the simulation speed, and the classification accuracy is basically the same,the algorithm, that combined the original support vector set with the new sample set rather than an initial sample set,greatly saves the computation time and accelerates the simulation speed, and the classification accuracy is basically the same.Meanwhile, with the continuous learning of incremental learning, the algorithm can naturally make part of the Hull vector into non-Hull vector, to achieve the selective forgetting of the historical data of the training.Therefore, when dealing with a large number of online data set ,the speed advantage of the incremental hull SVM method is more obvious.
+
+
+
 %=============第五部分 结论===================
 \section{V.	Conclusion}
 This  study  demonstrates  the  use  of  Raman  spectroscopy  combined  with Convex-Hull SVM  technique  for the  classification  of  the  spectral  data  acquired  from  Apple essense. Raman  spectroscopy  coupled  with  statistical  tools  has  great  potential  to  contribute significantly in the On-line inspection and research of product quality in an effective way.There is also a great  likelihood  to  use  Raman  spectroscopy  combined  with  one  of  the  existing  methods  for initial screening in order to increase the inspection efficiency. The results obtained are quite promising and interesting. The research work in our laboratory is still in progress striving for increasing sensitivity as well as specificity.
 
 \renewcommand\refname{References}
-\begin{thebibliography}{99}
+\begin{thebibliography}{12}
+    \bibitem{Sanz et al.}Sanz, C, Olias,  J.  M,  Perez,  A.  G. Aroma  bio-chemistry  of  fruits  and  vegetables.  In:  Tomas-Barberan,  F. A.; Robins, R. J. ed. Phytochemistryof  fruit  and  vegetables.  New  York,  Oxford  Uni-versity  Press  Inc.1997,125-155.
     \bibitem{Vapnik}V.N. Vapnik, The Nature of Statistical Learning Theory, Springer, New York,1995, 8 (6) :988 - 999
     \bibitem{Stefan}Stefan Ruping,Incremental Learning with Support Vector Machines,Technical Reports,2001,228(4):641-642
+    \bibitem{Asdrúbal López Chau et al.}Asdrúbal López Chau, Xiaoou Li, Wen Yu, Convex andconcave hulls for classification with support vector machine, Neurocomputing,http://dx.doi.org/10.1016/j.neucom.2013.05.040
     \bibitem{XIAORong}XIAO Rong, WANG Ji-cheng, SUN Zheng-xing. Anapproach to incremental SVM learning algorithm.Journal of Nanjing University, 2002, 38(2): 152 157.
     \bibitem{Zhu X}Zhu X, Lafferty J, Ghahramani Z. Combining active learning and semi-supervised learning using Gaussian fields  and  harmonic  functions[C].  In:  Proc  of  ICML  2003  Workshop  on  the  Continuum  from  Labeled  to Unlabeled Data. Menlo Park, CA:AAAI Press,2003:58-65.
     \bibitem{yunjungShin}Hyunjung Shin, Sungzoon Cho, Invariance of neighborhood relation underinput space to feature space mapping, Pattern Recognition Letters, 26 (2005)707–718.
     \bibitem{YJLee}Y.J. Lee, S.Y. Huang, Reduced support vector machines: a statistical theory,IEEE Transactions on Neural Networks 18 (No.1) (2007) 1–13.
-    \bibitem(Jing, Y)Jing, Y.; Meng, Q.; Qi, P.; Zeng, M.; Li, W.; Ma, S. Electronic nose with a new feature reduction method anda multi-linear classifier for Chinese liquor classification. Rev. Sci. Instrum. 2014, 85, 055004. [Cross Ref][Pub Med]
+    \bibitem{Jing et al.}Jing, Y.; Meng, Q.; Qi, P.; Zeng, M.; Li, W.; Ma, S. Electronic nose with a new feature reduction method and a multi-linear classifier for Chinese liquor classification. Rev. Sci. Instrum. 2014, 85, 055004. 
 
-    \bibitem(K.P. Bennett1)K.P. Bennett , E.J. Bredensteiner, Geometry in Learning, Geometry at Work, C. Gorinieditors, Mathematical Association of America, 132-145, 2000
-    \bibitem(K.P. Bennett2)K.P. Bennett , E.J. Bredensteiner, Duality and Geometry in SVM Classiﬁers, 17thInternational Conference on Machine Learning, San Francisco, CA, 2000
+    \bibitem{K.P. Bennett1}K.P. Bennett , E.J. Bredensteiner, Geometry in Learning, Geometry at Work, C. Gorinieditors, Mathematical Association of America, 132-145, 2000
+    \bibitem{K.P. Bennett2}K.P. Bennett , E.J. Bredensteiner, Duality and Geometry in SVM Classiﬁers, 17thInternational Conference on Machine Learning, San Francisco, CA, 2000
 \end{thebibliography}
 
 
