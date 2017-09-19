@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.7.24)  19 SEP 2017 23:10
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.7.24)  19 SEP 2017 23:40
 entering extended mode
 **newPaper.tex
 (D:\20_同步文件\newPaper\newPaper.tex
@@ -922,8 +922,8 @@ otf
 File: HullVector_SupportVector.jpg Graphic file (type QTm)
 
 <use  "HullVector_SupportVector.jpg" > [3]
-File: 算法示意图.jpg Graphic file (type QTm)
- <use  "算法示意图.jpg" >
+File: CCH-SVM.jpg Graphic file (type QTm)
+ <use  "CCH-SVM.jpg" >
 Overfull \hbox (17.33237pt too wide) in paragraph at lines 92--93
 \EU1/lmr/m/n/10 Convex-Concave Hull vector set $\OML/cmm/m/it/10 X[] \OT1/cmr/m
 /n/10 = \OML/cmm/m/it/10 CCH\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]\OT1/cmr/m/n/1
@@ -983,7 +983,7 @@ es,Technical
 [8] [9] (D:\20_同步文件\newPaper\newPaper.aux) ) 
 Here is how much of TeX's memory you used:
  16271 strings out of 430478
- 330441 string characters out of 3191002
+ 330445 string characters out of 3191002
  341957 words of memory out of 3000000
  19186 multiletter control sequences out of 15000+200000
  10160 words of font info for 62 fonts, out of 3000000 for 9000
