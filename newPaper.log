@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.7.24)  19 SEP 2017 00:45
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.7.24)  19 SEP 2017 23:10
 entering extended mode
 **newPaper.tex
 (D:\20_同步文件\newPaper\newPaper.tex
@@ -657,11 +657,7 @@ Package: subfigure 2002/07/30 v2.1.4 subfigure package
 \subfig@top=\skip67
 \subfig@bottom=\skip68
 )
-(D:\20_同步文件\newPaper\newPaper.aux
-
-LaTeX Warning: Label `a' multiply defined.
-
-)
+(D:\20_同步文件\newPaper\newPaper.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
@@ -680,7 +676,8 @@ LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 24.
 LaTeX Font Info:    Try loading font information for T3+cmr on input line 24.
- ("C:\Program Files (x86)\CTEX\MiKTeX\tex\latex\tipa\t3cmr.fd"
+
+("C:\Program Files (x86)\CTEX\MiKTeX\tex\latex\tipa\t3cmr.fd"
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
 LaTeX Font Info:    ... okay on input line 24.
@@ -915,74 +912,82 @@ Requested font "SimSun/ICU" at 10.0pt
 Requested font "SimSun/ICU:script=latn;language=DFLT;mapping=tex-text;" at 10.0
 pt
  -> C:/WINDOWS/Fonts/simsun.ttc
-
-Overfull \hbox (14.98128pt too wide) in paragraph at lines 37--38
-\EU1/lmr/m/n/10 chromatography-mass spectrometry [5–8] are highly reliable be
-cause they use a complete component-
- []
-
-[1
+ [1
 
 ]
 Requested font "[lmroman12-bold]:mapping=tex-text" at 12.0pt
  -> C:/Program Files (x86)/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman12-bold.
 otf
+ [2]
+File: HullVector_SupportVector.jpg Graphic file (type QTm)
 
+<use  "HullVector_SupportVector.jpg" > [3]
+File: 算法示意图.jpg Graphic file (type QTm)
+ <use  "算法示意图.jpg" >
+Overfull \hbox (17.33237pt too wide) in paragraph at lines 92--93
+\EU1/lmr/m/n/10 Convex-Concave Hull vector set $\OML/cmm/m/it/10 X[] \OT1/cmr/m
+/n/10 = \OML/cmm/m/it/10 CCH\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]\OT1/cmr/m/n/1
+0 )$\EU1/lmr/m/n/10 ,then make $\OML/cmm/m/it/10 X[] \OT1/cmr/m/n/10 = \OML/cmm
+/m/it/10 X[] [] X[] [] ::: [] X[]$ 
+ []
+
+[4]
+File: Typical_Raman_spectra.jpg Graphic file (type QTm)
+ <use  "Typical_Raman_spectra.jpg" >
+File: Figure_3.png Graphic file (type QTm)
+ <use  "Figure_3.png" >
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[2]
-File: HullVector_SupportVector.jpg Graphic file (type QTm)
- <use  "HullVector_SupportVector.jpg" > [3]
-Overfull \hbox (41.49905pt too wide) in paragraph at lines 123--124
-[]\EU1/lmr/m/n/10 The convex hull(CH) of a set of points S is the minimum conve
-x set that contains S.Mathematically,CH
- []
-
-File: 算法示意图.jpg Graphic file (type QTm)
-<use  "算法示意图.jpg" > [4]
-File: Typical_Raman_spectra.jpg Graphic file (type QTm)
- <use  "Typical_Raman_spectra.jpg" > [5]
-File: Figure_3.png Graphic file (type QTm)
-
-<use  "Figure_3.png" >
+[5]
 File: Figure_2.png Graphic file (type QTm)
  <use  "Figure_2.png" >
-Overfull \hbox (10.24472pt too wide) in paragraph at lines 192--193
+Overfull \hbox (10.24472pt too wide) in paragraph at lines 147--148
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 [6]
-Overfull \hbox (4.28088pt too wide) in paragraph at lines 216--216
+Overfull \hbox (4.28088pt too wide) in paragraph at lines 171--171
 []|\EU1/lmr/m/n/10 Simulation
  []
 
 
-Overfull \hbox (15.81174pt too wide) in paragraph at lines 218--218
+Overfull \hbox (15.81174pt too wide) in paragraph at lines 173--173
 []|\EU1/lmr/m/n/10 Initialization(randomly 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 251--252
+Underfull \hbox (badness 1817) in paragraph at lines 207--208
+[]\EU1/lmr/m/n/10 Zhou Xiu jun,Dai Lian kui,Li Sheng.Fast Discrimination of Edi
+ble Vegetable Oil
+ []
+
+
+Underfull \hbox (badness 1270) in paragraph at lines 207--208
+\EU1/lmr/m/n/10 Based on Raman Spectroscopy.Spectroscopy and Spectral Analysis 
+Spectrosc Spect
+ []
+
+
+Underfull \hbox (badness 1331) in paragraph at lines 208--209
+[]\EU1/lmr/m/n/10 WANG Jun,ZHAO Yue-li.Application of Chromatogram Fingerprint 
+in the Quality
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
 []\EU1/lmr/m/n/10 Stefan Ruping,Incremental Learning with Support Vector Machin
 es,Technical
  []
 
-[8] [9] (D:\20_同步文件\newPaper\newPaper.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[8] [9] (D:\20_同步文件\newPaper\newPaper.aux) ) 
 Here is how much of TeX's memory you used:
- 16274 strings out of 430478
- 330524 string characters out of 3191002
- 341985 words of memory out of 3000000
- 19189 multiletter control sequences out of 15000+200000
+ 16271 strings out of 430478
+ 330441 string characters out of 3191002
+ 341957 words of memory out of 3000000
+ 19186 multiletter control sequences out of 15000+200000
  10160 words of font info for 62 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,11n,43p,1023b,354s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,12n,43p,1227b,354s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on newPaper.pdf (9 pages).
