@@ -27,8 +27,9 @@
 Abstract:An important aspect of rapid discrimination of apple essences based on pattern recognition is how to use new training data to improve the accuracy and control the training time. In this paper,In this paper, PCA-CCH-SVM method and Raman spectra were used in combination for fast discrimination of apple essences from different brands.PCA-CCH-SVM built on a convex hull of support vectors and new Raman spectra data to classify the apple essence based on features obtained from Raman spectra.The classification model have been evaluated with 10-fold cross validation.The results from this study demonstrated that our approach has good classiﬁcation accuracy while the training is signiﬁcantly faster than normal SVM classiﬁers.
 
 Key words:Apple Essences;Convex-Concave Hull vector; PCA-CCH-SVM ; rapid discrimination
+
 %=============第一部分 简介===================
-\section{I. Introduction}
+\section{Introduction}
     % 苹果香精检测的背景、
 Apple essences are widely used as a food additive in food industry.Rapid identification of apple essence for the quality control of food industry's  is great significance.Apple essences are a complex mixture of a large number of volatile compounds$^{\cite{Sanz et al.}}$.Usually the detection of apple essence is carried out by chemistry-based methods and sensory evaluation. Sensory evaluation is the traditional and most commonly used method,but its accuracy and objectivity cannot always be ensured because sensory evaluation staff’s judgement can affected by their health condition, emotions, and the environment,and these chemistry-based methods such as gas chromatography, mass spectrometry, and gas chromatography-mass spectrometry are highly reliable because they use a complete component-by-component approach.However, their shortcomings include excessive test items, being time-consuming,complicated operation, and low capability for insitu and rapid measurements$^{\cite{K.P. Bennett1}}$ $^{\cite{K.P. Bennett2}}$. Overall, developing a novel, rapid and reliable method to identify  essence is of positive significance.
 
@@ -43,7 +44,7 @@ It is noteworthy that performance of classification method for apple essence is 
 The main contribution of this paper is that a novel hybrid classification method,PCA-CCH-SVM,combined with Raman spectra is proposed.Experimental results indicated that PCA-CCH-SVM ,as a classifier,was tested in terms of classification rate and running time.Compared with normal SVM,PCA-CCH-SVM can run much faster with similar accuracy rate.Experimental results showed that PCA-CCH-SVM combined with Raman spectra can be a rapid,accurate  method for classification of apple essences.
 
 %=============第二部分 实验与材料===================
-\section{II.Experiments and Materials}
+\section{Experiments and Materials}
 \subsection{Sample collection and preparation}
 
 We purchased a total of three brands of samples from three famous flavors and fragrances companies in China.Each brand of samples are divided into three batches, each batch of 10 samples.Apple essence contains a large number of volatile, low content components.The complex pretreatment methods of samples have some impact on these components.In order to avoid introducing other impurities or the distortion of component proportion caused by improper pretreatment method,in this experiment, the test samples are prepared by high dilution of pure water.Add 3 grams of essence in the volumetric flask,was respectively diluted 10 times and 1000 times with high purity water,and  shaked well, then got samples.The  standard  safety  rules  have  been  followed  at  each step from sample collection till acquisition of Raman spectra.For each sample, we collect 10 Raman spectra at different times .In total,Raman spectra of 900 samples have been used in this study.
@@ -85,7 +86,7 @@ The procedure is summarized as follows:
 \begin{figure}[h]
   \centering
   \includegraphics[width=9cm,height=6cm]{CCH-SVM}
-  \caption{Gneral process of the method,take two classes as sample}
+  \caption{gneral process of CCH-SVM algorithm,take two classes as sample}
 \end{figure}
 
 \begin{enumerate}
@@ -103,7 +104,7 @@ Repeat steps 3) and 4) enable continuous incremental learning of new samples.
 
 
 %=============第三部分 数据分析===================
-\section{III. Data Analysis}
+\section{Data Analysis}
 
 
 % 拉曼数据分析
@@ -114,7 +115,7 @@ Raman spectrum of apple essence samples is normally very complex and rich of inf
 
 Raman  spectrum  of  essence samples  is  normally  very  complex  and  rich  of  chemical information.  Since  in essence  samples,  there  exist  different  types  of  functional group compound. The Raman spectrum of each of these compound consists of  numerous peaks.  The  visual  assignment  of  any  particular  peaks  to  a  specific  molecule usually  produces  imprecision  in  the  final  result,  because  most  of  the  time  different molecules  contribute  to  the  same  peak.  In  order  to  overcome  this  limitation  of  visual analysis, statistical methods are mostly used for the interpretation of Raman data of essence samples. With the statistical approach one can extract useful information from the data set by high  lighting  the  similarities  and differences.In  this  study,we  are using Convex-Concave Hull SVM  for  the  classification of  apple essence,in order to efficiently handle large amounts of sample data.
 %=============第四部分 结果与分析===================
-\section{IV. Result and Discussion}
+\section{Result and Discussion}
 % 实验结果
 \subsection{Raw data of Characteristic Information}
 % 拉曼光谱的三维图
@@ -142,11 +143,7 @@ The dimension of feature space generated by PCA is not determined by itself, and
 
     \subsubsection{Classification result with CCH-SVM}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=15cm,height=6cm]{Figure_2}
-  \caption{Typical Raman spectra of nine kinds of apple essences}
-\end{figure}
+
 
 The CCH-SVM algorithm was used to classify the ten brands of apple essences samples. We selected the RBF kernel function in the CCH-SVM algorithm, and the kernel parameter was optimized using the Particle Swarm Optimization(PSO) method. To assess the performance of the established classifier, leave-one-out cross-validation and 10-fold cross-validation were conducted. These cross-validations fully assessed the performance of the classification model.
 % CCH-SVM分类效果图
@@ -159,43 +156,22 @@ The CCH-SVM algorithm was used to classify the ten brands of apple essences samp
 
 
 % 对比不同方法的分类效果
-For comparison, three different algorithms were simulated.Algorithm 1 uses the standard SVM algorithm, which uses all the samples to solve the support vector for each incremental learning.Algorithm 2 uses the support vector set instead of the original sample set for incremental learning, that is,using the original classifier support vector set instead of the original sample set, combined with the new sample to be calculated together.Algorithm 3 is the CCH-SVM algorithm.The initial sample set is 135 samples randomly selected from all samples, and 70 samples are added for each incremental learning. After each learning, using all 345 samples to check the classification effect.The results are shown in Table 2,after the first to third incremental learning process,Compared with the new shell vector set, the number of shell vectors transformed into non-shell vectors is 14,17,18.
+For comparison, three different algorithms were simulated.Algorithm 1 uses the normal SVM algorithm, which uses all the samples to solve the support vector for each incremental learning.Algorithm 2 is SV-SVM algorithm, which uses the support vector set for incremental learning.Algorithm 3 is the CCH-SVM algorithm.The initial sample set is 100 samples randomly selected from all samples, and 16 samples are added for each incremental learning. The results are shown in Fig 5.
 
-    \begin{table}[h] %开始一个表格environment，表格的位置是h,here
+\begin{figure}[h]
   \centering
-  \caption{Simulation results after adding group samples}\label{a}
-  \begin{tabular}{|p{3.5cm}|c|p{1.5cm}|c|c|c|c|}
+  \includegraphics[width=15cm,height=6cm]{Figure_2}
+  \caption{compare three algorithms}
+\end{figure}
 
-     \hline
-     % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
-     learning process       & algorithm       & Simulation sample   & CCHv    & Sv & t/s    & $\eta/\%$  \\
-     \hline
-     \multirow{3}{3cm} {Initialization(randomly selected 135 sample data)}&1    &300 & -    &57 & 29.5 & 83.42         \\
-                                                                          &2    &300 & -    &57 & 29.5 & 83.42         \\
-                                                                          &3    &300 & 150   &57 & 21.1 & 83.42         \\
-
-    \hline
-     \multirow{3}{3.5cm}{After the first incremental study(add 70 sample data)} &1    &200 & -      &71 & 76.5 & 84.32         \\
-                                                                                &2    &200 & -      &71 & 37.5 & 84.34         \\
-                                                                                &3    &200 & 143    &71 & 49.1 & 84.32         \\
-    \hline
-    \multirow{3}{3.5cm} {After the second incremental study(add 70 sample data)} &1    &200 & -     &84 & 112.5 & 87.80         \\
-                                                                                 &2    &200 & -     &85 & 37.5 & 86.42         \\
-                                                                                 &3    &200 & 171   &84 & 56.3 & 88.58         \\
-    \hline
-    \multirow{3}{3.5cm} {After the third incremental study(add 70 sample data)} &1    &200 & -      &95 & 137.5 & 92.24         \\
-                                                                                &2    &200 & -      &89 & 57.1 & 92.46         \\
-                                                                                &3    &200 & 195    &95 & 60.5 & 91.84         \\
-    \hline
-  \end{tabular}
-
-\end{table}
-
-It can be seen from the simulation results that the SVM incremental learning algorithm based on Convex-Concave Hull vector is compared with the standard SVM method, which greatly saves the computation time and accelerates the simulation speed, and the classification accuracy is basically the same,the algorithm, that combined the original support vector set with the new sample set rather than an initial sample set,greatly saves the computation time and accelerates the simulation speed, and the classification accuracy is basically the same.Meanwhile, with the continuous learning of incremental learning, the algorithm can naturally make part of the Convex-Concave Hull vector into non-Hull vector, to achieve the selective forgetting of the historical data of the training.Therefore, when dealing with a large number of online data set ,the speed advantage of the incremental Convex-Concave Hull SVM method is more obvious.
+It can be seen from the simulation results that the CCH-SVM and SV-SVM incremental learning algorithm based on Convex-Concave Hull vector is compared with the standard SVM method, which greatly saves the computation time and accelerates the simulation speed, and the classification accuracy is basically the same,the algorithm, that combined the original support vector set with the new sample set rather than an initial sample set,greatly saves the computation time and accelerates the simulation speed, and the classification accuracy is basically the same.Meanwhile, with the continuous learning of incremental learning, the algorithm can naturally make part of the Convex-Concave Hull vector into non-Hull vector, to achieve the selective forgetting of the historical data of the training.Therefore, when dealing with a large number of new training data set ,the speed advantage of the incremental Convex-Concave Hull SVM method is more obvious.
 
 %=============第五部分 结论===================
-\section{V.	Conclusion}
-This  study  demonstrates  the  use  of  Raman  spectroscopy  combined  with Convex-Concave Hull SVM  technique  for the  classification  of  the  spectral  data  acquired  from  apple essense. Raman  spectroscopy  coupled  with  statistical  tools  has  great  potential  to  contribute significantly in the On-line inspection and research of product quality in an effective way.There is also a great  likelihood  to  use  Raman  spectroscopy  combined  with  one  of  the  existing  methods  for initial screening in order to increase the inspection efficiency. The results obtained are quite promising and interesting. The research work in our laboratory is still in progress striving for increasing sensitivity as well as specificity.
+\section{Conclusion}
+This  study  demonstrates  the  use  of  Raman  spectrum  combined  with Convex-Concave Hull SVM  technique  for the  classification  of  the  spectral  data  acquired  from  apple essences. Raman  spectroscopy  coupled  with  statistical  tools  has  great  potential  to  contribute significantly in the On-line inspection and research of product quality in an effective way.There is also a great  likelihood  to  use  Raman  spectroscopy  combined  with  one  of  the  existing  methods  for initial screening in order to increase the inspection efficiency. The results obtained are quite promising and interesting. The research work in our laboratory is still in progress striving for increasing sensitivity as well as specificity.
+
+\section{Acknowledgements}
+This paper was supported by the National Natural Science Foundation of China (No. 61373058).
 
 \renewcommand\refname{References}
 \begin{thebibliography}{30}
