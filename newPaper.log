@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.7.24)  20 SEP 2017 01:55
+This is XeTeX, Version 3.1415926-2.3-0.9997.5 (MiKTeX 2.9) (preloaded format=xelatex 2017.7.24)  27 SEP 2017 21:28
 entering extended mode
 **newPaper.tex
 (D:\20_同步文件\newPaper\newPaper.tex
@@ -861,10 +861,6 @@ Requested font "msbm7" at 7.0pt
  -> msbm7
 Requested font "msbm5" at 5.0pt
  -> msbm5
-
-
-LaTeX Warning: Citation `Sanz et al.' on page 1 undefined on input line 37.
-
 Requested font "SimSun" at 10.0pt
  -> C:/WINDOWS/Fonts/simsun.ttc
 Requested font "SimSun/ICU" at 10.0pt
@@ -901,61 +897,27 @@ Requested font "SimHei/I/ICU" at 10.0pt
 Requested font "SimSun/ICU:script=latn;language=DFLT;mapping=tex-text;" at 10.0
 pt
  -> C:/WINDOWS/Fonts/simsun.ttc
-
-LaTeX Warning: Citation `K.P. Bennett1' on page 1 undefined on input line 37.
-
-
-LaTeX Warning: Citation `K.P. Bennett2' on page 1 undefined on input line 37.
-
-
-LaTeX Warning: Citation `Zhou Xiu jun' on page 1 undefined on input line 39.
-
-
-LaTeX Warning: Citation `WANG Jun' on page 1 undefined on input line 40.
-
-
-LaTeX Warning: Citation `SHA Min' on page 1 undefined on input line 40.
-
-
-LaTeX Warning: Citation `Vapnik' on page 1 undefined on input line 42.
-
-
-LaTeX Warning: Citation `Stefan' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Citation `Asdrúbal López Chau et al.' on page 1 undefined on i
-nput line 43.
-
-
-LaTeX Warning: Citation `XIAORong' on page 1 undefined on input line 43.
-
-[1
+ [1
 
 ]
-
-LaTeX Warning: Citation `Stefan' on page 2 undefined on input line 45.
-
-
-LaTeX Warning: Citation `K.P. Bennett1' on page 2 undefined on input line 45.
+Overfull \hbox (11.38127pt too wide) in paragraph at lines 47--48
+\EU1/lmr/m/n/10 PCA-CCH-SVM, as a classifier,was tested in terms of classificat
+ion rate and running time.Compared
+ []
 
 Requested font "[lmroman12-bold]:mapping=tex-text" at 12.0pt
  -> C:/Program Files (x86)/CTEX/MiKTeX/fonts/opentype/public/lm/lmroman12-bold.
 otf
 [2]
 File: HullVector_SupportVector.jpg Graphic file (type QTm)
- <use  "HullVector_SupportVector.jpg" >
-
-LaTeX Warning: Citation `Asdrúbal López Chau et al.' on page 3 undefined on i
-nput line 77.
-
-[3]
+ <use  "HullVector_SupportVector.jpg" > [3]
 File: CCH-SVM.jpg Graphic file (type QTm)
  <use  "CCH-SVM.jpg" >
-Overfull \hbox (17.33237pt too wide) in paragraph at lines 96--97
+Overfull \hbox (19.77437pt too wide) in paragraph at lines 96--97
 \EU1/lmr/m/n/10 Convex-Concave Hull vector set $\OML/cmm/m/it/10 X[] \OT1/cmr/m
 /n/10 = \OML/cmm/m/it/10 CCH\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]\OT1/cmr/m/n/1
-0 )$\EU1/lmr/m/n/10 ,then make $\OML/cmm/m/it/10 X[] \OT1/cmr/m/n/10 = \OML/cmm
-/m/it/10 X[] [] X[] [] ::: [] X[]$ 
+0 )$\EU1/lmr/m/n/10 , then make $\OML/cmm/m/it/10 X[] \OT1/cmr/m/n/10 = \OML/cm
+m/m/it/10 X[] [] X[] [] ::: [] X[]$ 
  []
 
 [4]
@@ -969,7 +931,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [5]
 File: Figure_2.png Graphic file (type QTm)
  <use  "Figure_2.png" >
-Overfull \hbox (10.2422pt too wide) in paragraph at lines 166--167
+Overfull \hbox (10.2422pt too wide) in paragraph at lines 164--165
  [][] 
  []
 
@@ -977,44 +939,37 @@ Overfull \hbox (10.2422pt too wide) in paragraph at lines 166--167
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [6] [7]
-Underfull \hbox (badness 1817) in paragraph at lines 186--187
+Underfull \hbox (badness 1817) in paragraph at lines 184--185
 []\EU1/lmr/m/n/10 Zhou Xiu jun,Dai Lian kui,Li Sheng.Fast Discrimination of Edi
 ble Vegetable Oil
  []
 
 
-Underfull \hbox (badness 1270) in paragraph at lines 186--187
+Underfull \hbox (badness 1270) in paragraph at lines 184--185
 \EU1/lmr/m/n/10 Based on Raman Spectroscopy.Spectroscopy and Spectral Analysis 
 Spectrosc Spect
  []
 
 
-Underfull \hbox (badness 1331) in paragraph at lines 187--188
+Underfull \hbox (badness 1331) in paragraph at lines 185--186
 []\EU1/lmr/m/n/10 WANG Jun,ZHAO Yue-li.Application of Chromatogram Fingerprint 
 in the Quality
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
 []\EU1/lmr/m/n/10 Stefan Ruping,Incremental Learning with Support Vector Machin
 es,Technical
  []
 
-[8] (D:\20_同步文件\newPaper\newPaper.aux)
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[8] (D:\20_同步文件\newPaper\newPaper.aux) ) 
 Here is how much of TeX's memory you used:
  16262 strings out of 430478
  330310 string characters out of 3191002
- 338542 words of memory out of 3000000
+ 338585 words of memory out of 3000000
  19180 multiletter control sequences out of 15000+200000
  10136 words of font info for 59 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 57i,12n,43p,1227b,358s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,12n,43p,1225b,358s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on newPaper.pdf (8 pages).
