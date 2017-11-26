@@ -178,6 +178,10 @@ if __name__ == '__main__':
     raw_data = load_ranman_data(isJiaozheng=False)
     raw_data = load_zhiwai_data()
     x = raw_data[:,:-2]
+    # 使用分片翻转列的顺序,其中[::-1]代表从后向前取值，每次步进值为1
+    x = x[:,::-1]
+    # 紫外光谱测试是测了190到600nm波段 分析的时候 取240-500nm即可
+    x = x[:,50:311]
     y = raw_data[:,-1]
 
     # ======================================================
@@ -217,15 +221,17 @@ if __name__ == '__main__':
     #
     # ======================================
     from sklearn.ensemble import AdaBoostClassifier
+    from sklearn.ensemble import GradientBoostingClassifier
     from sklearn.tree import DecisionTreeClassifier
 
     #bdt_real =  AdaBoostClassifier(base_estimator=clf,n_estimators=500 ,learning_rate=1,algorithm='SAMME')
     clf = SVC()
-    bdt_real = AdaBoostClassifier(base_estimator=clf,n_estimators=50,algorithm='SAMME')
+    # bdt_real = AdaBoostClassifier(base_estimator=clf,n_estimators=50,algorithm='SAMME')
+    bdt_real = GradientBoostingClassifier()
     bdt_real.fit(train_x,train_y)
 
     score = bdt_real.score(test_x,test_y)
-    print(score)
+    print("GradientBoostingClassifier score = ",score)
 
     # =====================================================
     '''
@@ -245,7 +251,8 @@ if __name__ == '__main__':
     for f in range(x.shape[1]):
         print("%d. feature %d (%f)" % (f + 1, indices[f], importances[indices[f]]))
 
-    indices = indices[0:50]
+    indices = indices[0:100] + 190
+    '''
     plt.figure()
     plt.title("Feature importances")
     plt.bar(range(indices.shape[0]), importances[indices],
@@ -253,5 +260,9 @@ if __name__ == '__main__':
     plt.xticks(range(indices.shape[0]), indices)
     plt.xlim([-1, indices.shape[0]])
     plt.show()
-
+    '''
+    # 直方图
+    plt.figure()
+    plt.hist(indices,15)
+    plt.show()
 
