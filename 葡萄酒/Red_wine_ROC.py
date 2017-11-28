@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Nov 21 19:48:39 2017
+Created on Tue Nov 28 20:11:57 2017
 
 @author: TIM
 """
@@ -20,6 +20,7 @@ from sklearn import metrics
 from sklearn.model_selection import StratifiedKFold
 from sklearn.multiclass import OneVsRestClassifier
 from matplotlib import pyplot as plt
+from sklearn.preprocessing import label_binarize
 
 import pickle
 
@@ -254,6 +255,9 @@ def draw_auc(decision_function_value,predict_proba_value):
     plt.show()
     return
 
+##==========================================================
+# 主程序
+
 if __name__ == '__main__':
     ## ======================================================
     # 一、获取数据
@@ -265,6 +269,7 @@ if __name__ == '__main__':
     # 紫外光谱测试是测了190到600nm波段 分析的时候 取240-500nm即可
     x = x[:,50:311]
     y = raw_data[:,-1]
+    yy = label_binarize(y, classes=np.unique(y) )
 
     # ======================================================
     # 二、数据预处理
@@ -279,8 +284,8 @@ if __name__ == '__main__':
     x = pca.transform(x)
     '''
     # 切分训练集与测试集
-    train_x, test_x, train_y, test_y = train_test_split(x, y, train_size=0.5, random_state=0)
-
+    train_x, test_x, train_y, test_y = train_test_split(x, yy, train_size=0.5, random_state=0)
+    '''
     # 网格寻找最佳参数
     C_range = np.logspace(-2, 3, 13)  # logspace(a,b,N)把10的a次方到10的b次方区间分成N份
     gamma_range = np.logspace(-3, 3, 13)
@@ -295,56 +300,89 @@ if __name__ == '__main__':
 
     # 训练svm模型
     clf = SVC(C=grid.best_params_['C'],gamma=grid.best_params_['gamma'])
+    '''
+    # 'C': 1.2115276586285888, 'gamma': 0.031622776601683791
+    clf = OneVsRestClassifier(SVC( C=1.2115276586285888,gamma=0.031622776601683791, probability=True,random_state=0 ) )
     clf.fit(train_x,train_y)
     score = clf.score(test_x,test_y)
     print(score)
 
-    # ======================================
-    #
-    # ======================================
-    from sklearn.ensemble import AdaBoostClassifier
-    from sklearn.ensemble import GradientBoostingClassifier
-    from sklearn.tree import DecisionTreeClassifier
+    
 
-    #bdt_real =  AdaBoostClassifier(base_estimator=clf,n_estimators=500 ,learning_rate=1,algorithm='SAMME')
-    clf = SVC()
-    # bdt_real = AdaBoostClassifier(base_estimator=clf,n_estimators=50,algorithm='SAMME')
-    bdt_real = GradientBoostingClassifier()
-    bdt_real.fit(train_x,train_y)
+    #==================================================================
+    # ROC曲线
+    
+    # 计算标准svm的roc曲线
+    # Learn to predict each class against the other
+    
+    # Binarize the output 二值化标签
+    
+    n_classes = y.shape[1]
+    y_decision_function = clf.fit(train_x, train_y).decision_function(test_x)
+    y_score = clf.fit(train_x, train_y).predict_proba(test_x)
+    
+    fpr = dict()
+    tpr = dict()
+    roc_auc = dict()
+    for i in range(n_classes):
+        fpr[i],tpr[i],_ = metrics.roc_curve(test_y[:,i], y_score[:,i])
+        roc_auc[i] = metrics.auc(fpr[i],tpr[i])
+        
+    
+    
+    # 微平均（Micro-averaging），是对数据集中的每一个实例不分类别进行统计建立全局混淆矩阵，
+    # 然后计算相应指标
+    # Compute micro-average ROC curve and ROC area
+    # ravel展开为一维数组
+    fpr["micro"], tpr["micro"], _ = metrics.roc_curve( test_y.ravel(), #通过ravel的方法将数组拉直
+                                           y_score.ravel()) 
 
-    score = bdt_real.score(test_x,test_y)
-    print("GradientBoostingClassifier score = ",score)
-
-    # =====================================================
-    '''
-    在scikit-learn中，RF的分类类是RandomForestClassifier，回归类是RandomForestRegressor。
-    当然RF的变种Extra Trees也有， 分类类ExtraTreesClassifier，
-    回归类ExtraTreesRegressor。由于RF和Extra Trees的区别较小，调参方法基本相同
-    '''
-    from sklearn.ensemble import ExtraTreesClassifier
-    forest = ExtraTreesClassifier(n_estimators=200,random_state=0)
-    forest.fit(x,y)
-    importances = forest.feature_importances_
-    std = np.std([ tree.feature_importances_ for tree in forest.estimators_],axis=0)
-    indices = np.argsort(importances)[::-1]
-
-    # Print the feature ranking
-    print("Feature ranking:")
-    for f in range(x.shape[1]):
-        print("%d. feature %d (%f)" % (f + 1, indices[f], importances[indices[f]]))
-
-    indices = indices[0:100] + 190
-    '''
+    roc_auc["micro"] = metrics.auc(fpr["micro"], tpr["micro"])
+    
     plt.figure()
-    plt.title("Feature importances")
-    plt.bar(range(indices.shape[0]), importances[indices],
-            color="r", yerr=std[indices], align="center")
-    plt.xticks(range(indices.shape[0]), indices)
-    plt.xlim([-1, indices.shape[0]])
-    plt.show()
-    '''
-    # 直方图
-    plt.figure()
-    plt.hist(indices,15)
-    plt.show()
 
+    # 宏平均（Macro-averaging），是先对每一个类统计指标值，
+    # 然后在对所有类求算术平均值。宏平均指标相对微平均指标而言受小类别的影响更大。
+    # Compute macro-average ROC curve and ROC area
+    
+    # First aggregate all false positive rates
+    all_fpr = np.unique(np.concatenate([fpr[i] for i in range(n_classes)]))
+    
+    # Then interpolate all ROC curves at this points
+    mean_tpr = np.zeros_like(all_fpr)
+    for i in range(n_classes):
+        mean_tpr += np.interp(all_fpr, fpr[i], tpr[i])
+    
+    # Finally average it and compute AUC
+    mean_tpr /= n_classes
+    
+    fpr["macro"] = all_fpr
+    tpr["macro"] = mean_tpr
+    roc_auc["macro"] = metrics.auc(fpr["macro"], tpr["macro"])
+    
+    # Plot all ROC curves
+
+    ''''''
+    plt.plot(fpr["micro"], tpr["micro"],
+             label='micro-average ROC curve (area = {0:0.2f})'
+                   ''.format(roc_auc["micro"]),
+             color='deeppink', linestyle=':', linewidth=4)
+    
+    plt.plot(fpr["macro"], tpr["macro"],
+             label='macro-average ROC curve (area = {0:0.2f})'
+                   ''.format(roc_auc["macro"]),
+             color='navy', linestyle=':', linewidth=4)
+
+    for i in range(n_classes):
+        plt.plot(fpr[i], tpr[i],
+                 label= 'ROC curve of class {0} (area = {1:0.2f})'
+                 ''.format(i, roc_auc[i]))
+    
+    plt.plot([0, 1], [0, 1], 'k--')
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('Some extension of Receiver operating characteristic to multi-class')
+    plt.legend(loc="lower right")
+    plt.show()
