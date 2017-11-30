@@ -266,6 +266,21 @@ def draw_pic():
     results_normal_nw = np.loadtxt('normal_nw.txt')
     results_increment_svm = np.loadtxt('increment_svm.txt')
     results_normal_svm = np.loadtxt('normal_svm.txt')
+    
+    print('normal nw min=%.2f,max = %.2f,mean = %.2f, std= %.2f'%(np.min(results_normal_nw[:,-1]),
+                                                                  np.max(results_normal_nw[:,-1]),
+                                                                  np.mean(results_normal_nw[:,-1]),
+                                                                  np.std(results_normal_nw[:,-1])))
+    
+    print('increment_svm min=%.2f,max = %.2f,mean = %.2f, std= %.2f'%(np.min(results_increment_svm[:,-1]),
+                                                                  np.max(results_increment_svm[:,-1]),
+                                                                  np.mean(results_increment_svm[:,-1]),
+                                                                  np.std(results_increment_svm[:,-1])))
+    
+    print('normal_svm min=%.2f,max = %.2f,mean = %.2f, std= %.2f'%(np.min(results_normal_svm[:,-1]),
+                                                                  np.max(results_normal_svm[:,-1]),
+                                                                  np.mean(results_normal_svm[:,-1]),
+                                                                  np.std(results_normal_svm[:,-1])))
 
     plt.figure(1)
     # 图1
