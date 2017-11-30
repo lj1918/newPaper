@@ -257,7 +257,7 @@ def draw_auc(decision_function_value,predict_proba_value):
 if __name__ == '__main__':
     ## ======================================================
     # 一、获取数据
-    raw_data = load_ranman_data(isJiaozheng=False)
+    #raw_data = load_ranman_data(isJiaozheng=False)
     raw_data = load_zhiwai_data()
     x = raw_data[:,:-2]
     # 使用分片翻转列的顺序,其中[::-1]代表从后向前取值，每次步进值为1
