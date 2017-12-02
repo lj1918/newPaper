@@ -198,9 +198,32 @@ def Create_Data(raw_data_x,raw_data_y,muls=10):
         random_mean[i, :] = tp + random_mean[i, :]
     return (random_mean + mul_raw_data),mul_raw_data_y
 
+def Create_Data2(raw_data_x,raw_data_y,muls=10):
+    '''每个数据扩展为mul个数据'''
+    if muls == 1:
+        return raw_data_x,raw_data_y
+    mul = muls
+    [m,n] = raw_data_x.shape
+    # 构造[ mul*m，n ] 矩阵
+    random_mean = np.ones((m*mul,n)) # 基于均值的随机波动矩阵
+    mul_raw_data = np.ones((m*mul,n))
+    mul_raw_data_y = np.ones((m*mul,1))
+    # raw_data 扩充mul倍
+    for i in range(m):
+        mul_raw_data[i*mul:(i+1)*mul,: ] = raw_data_x[i, :]
+        mul_raw_data_y[i*mul:(i+1)*mul ] = raw_data_y[i]
+    # 各维度平均值
+    mean_data = np.mean(raw_data_x, axis=0)
+    #
+    for i in range(mul):
+        for j in range(m):
+            tp =  np.random.choice((0,i),p=[0.8,0.2]) * 0.047 * (np.random.ranf(n) - 0.5)
+            random_mean[i, :] = tp + random_mean[i, :]
+    return (random_mean + mul_raw_data),mul_raw_data_y
+
 if __name__ == '__main__':   
     
-    if (1==1):        
+    if (1==1):
         raw_data = load_zhiwai_data()
         xx = raw_data[:,:-2]
         # 使用分片翻转列的顺序,其中[::-1]代表从后向前取值，每次步进值为1
@@ -212,7 +235,7 @@ if __name__ == '__main__':
         
         muls = 100
         # 取第一个样本的数据进行扩成
-        [x1,y1] = Create_Data(xx,yy,muls=muls)
+        [x1,y1] = Create_Data2(xx,yy,muls=muls)
         # 保存生成的数据
         np.savetxt('x1.txt',x1)
         np.savetxt('y1.txt',y1)
@@ -251,7 +274,7 @@ if __name__ == '__main__':
     # ===============================
     # 增量学习
     # 3、开始增量学习
-    batchs = 20  # 学习批次
+    batchs = 100  # 学习批次
     nums = np.floor(x_test.shape[0] / batchs).astype('int')  # 进行切片运算时，必须是整数
     remainder = x_test.shape[0] % batchs
     results = np.zeros((batchs, 4))
@@ -264,7 +287,6 @@ if __name__ == '__main__':
     batchs_x_train = x_train.copy()
     batchs_y_train = y_train.copy()
     for i in np.arange(0, batchs):
-        print('第%d次增量学习' % (i + 1))
         train_size = 0.8
         # 用nums *  train_size 个新增样本进行训练，剩余进行测试
         batchs_x_train = np.vstack((x_train[:,:],x_test[i * nums : ((i + 1) * nums * train_size).astype('int'), :]))
@@ -276,9 +298,9 @@ if __name__ == '__main__':
         # 用剩余的部分进行测试
         result_y = clf.predict(x_test[((i + 1) * nums * train_size).astype('int'):(i + 1) * nums, :])
         result = result_y - y_test[((i + 1) * nums * train_size).astype('int'):(i + 1) * nums]
-        print('正确率：%f' % (np.sum(result == 0) / result.shape[0]))
-        for i in np.arange( clf.n_support_.shape[0]):
-            print('类别：%d 的支持向量数量为%d' % (0, clf.n_support_[i]))
+        print('第%d次增量学习,正确率：%f' % (i+1,np.sum(result == 0) / result.shape[0]))
+        #for i in np.arange( clf.n_support_.shape[0]):
+        #    print('类别：%d 的支持向量数量为%d' % (i, clf.n_support_[i]))
 
         # 自动判断是否以科学计数法输出,'{:g}'.format(i),没有效果
         results[i, :] = [i,
@@ -286,23 +308,18 @@ if __name__ == '__main__':
                          clf.n_support_[1],
                          (np.sum(result == 0) / result.shape[0])]
 
-    np.savetxt('results_svm.txt', results)
-    # 绘图
-    plt.plot(results[:, 0], results[:, -1], 'r-*')
-    plt.ylim((0, 1))
-    plt.show()
-    
-    
+    #np.savetxt('results_svm.txt', results)
+
     # ======================================
     # 非增量学习,多批次增加标签数据
     
     # test_size=0.995,确保train的样本少于54
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.995,
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.9,
                                                         random_state=0)
-    batchs = 20  # 多批次识别
+
     nums = np.floor(x_test.shape[0] / batchs).astype('int')  # 进行切片运算时，必须是整数
     remainder = x_test.shape[0] % batchs
-    results = np.zeros((batchs, 4))
+    resultsb = np.zeros((batchs, 4))
     
     clf = SVC()
     clf.fit(x_train,y_train)
@@ -314,6 +331,17 @@ if __name__ == '__main__':
         result_y = clf.predict( batchs_x_test )
         result = result_y - batchs_y_test
         print('第 %f 次识别的正确率：%f' % (i,np.sum(result == 0) / result.shape[0]))
+        resultsb[i, :] = [i,
+                         clf.n_support_[0],
+                         clf.n_support_[1],
+                         (np.sum(result == 0) / result.shape[0])]
+
+    # 绘图
+    plt.plot(results[:, 0], results[:, -1], '-*',label='incremental svm')
+    plt.plot(resultsb[:, 0], resultsb[:, -1], '-+',label='svm')
+    plt.legend(loc='best')
+    plt.grid()
+    plt.show()
  
 
 
