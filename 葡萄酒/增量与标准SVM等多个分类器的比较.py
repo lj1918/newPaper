@@ -18,6 +18,8 @@ from sklearn.model_selection import train_test_split, cross_val_score, KFold
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import  PCA
 from matplotlib import pyplot as plt
+from matplotlib.font_manager import *
+myfont = FontProperties(fname=u'C:\Windows\Fonts\simsun.ttc',size=16)
 
 '''
 # from sklearn import cross_validation as cv
@@ -267,46 +269,60 @@ def draw_pic():
     results_increment_svm = np.loadtxt('increment_svm.txt')
     results_normal_svm = np.loadtxt('normal_svm.txt')
     
-    print('normal nw min=%.2f,max = %.2f,mean = %.2f, std= %.2f, Accuracy = %.4f'%(np.min(results_normal_nw[:,-1]),
+    print('normal nw min=%.2f,max = %.2f,mean = %.2f, std= %.2f, Accuracy = %.4f ,time = %.4f'%(np.min(results_normal_nw[:,-1]),
                                                                   np.max(results_normal_nw[:,-1]),
                                                                   np.mean(results_normal_nw[:,-1]),
                                                                   np.std(results_normal_nw[:,-1]),
-                                                                  np.mean(results_normal_nw[:,-2])))
+                                                                  np.mean(results_normal_nw[:,-2]),
+                                                                  np.mean(results_normal_svm[:,-1])
+                                                                  ))
     
-    print('increment_svm min=%.2f,max = %.2f,mean = %.2f, std= %.2f, Accuracy = %.4f'%(np.min(results_increment_svm[:,-1]),
+    print('increment_svm min=%.2f,max = %.2f,mean = %.2f, std= %.2f, Accuracy = %.4f ,time = %.4f'%(np.min(results_increment_svm[:,-1]),
                                                                   np.max(results_increment_svm[:,-1]),
                                                                   np.mean(results_increment_svm[:,-1]),
                                                                   np.std(results_increment_svm[:,-1]),
-                                                                  np.mean(results_increment_svm[:,-2])))
+                                                                  np.mean(results_increment_svm[:,-2]),
+                                                                  np.mean(results_normal_svm[:,-1])
+                                                                  ))
     
-    print('normal_svm min=%.2f,max = %.2f,mean = %.2f, std= %.2f, Accuracy = %.4f'%(np.min(results_normal_svm[:,-1]),
+    print('normal_svm min=%.2f,max = %.2f,mean = %.2f, std= %.2f, Accuracy = %.4f ,time = %.4f' % (np.min(results_normal_svm[:,-1]),
                                                                   np.max(results_normal_svm[:,-1]),
                                                                   np.mean(results_normal_svm[:,-1]),
                                                                   np.std(results_normal_svm[:,-1]),
-                                                                  np.mean(results_normal_svm[:,-2])))
+                                                                  np.mean(results_normal_svm[:,-2]),
+                                                                  np.mean(results_normal_svm[:,-1])
+                                                                  ))
+    
+    
 
     plt.figure(1)
     # 图1
     plt.subplot(121)
     plt.plot(results_increment_svm[:, 0], results_increment_svm[:, -2] * 100, '-*', label='SV-SVM')
-    plt.plot(results_normal_nw[:, 0], results_normal_nw[:, -2] * 100, '-+', label='MLPNN')
+    #plt.plot(results_normal_nw[:, 0], results_normal_nw[:, -2] * 100, '-+', label='MLPNN')
     plt.plot(results_normal_svm[:, 0], results_normal_svm[:, -2] * 100, '-D', label='SVM')
     plt.ylim((40, 100))
     # plt.title('Classification accuracies of the normal svm and hull svm')
-    plt.xlabel('Increment learning nums', fontsize=16)
-    plt.ylabel('Classification accuracy(%)', fontsize=16)
+#    plt.xlabel('Increment learning nums', fontsize=16)
+#    plt.ylabel('Classification accuracy(%)', fontsize=16)
+    plt.xlabel('增量学习次数', fontproperties=myfont)
+    plt.ylabel('分类器准确率(%)', fontproperties=myfont)
     plt.legend(loc='best')
     # 图2
     scale = 3
     plt.subplot(122)
     plt.plot(results_increment_svm[:, 0], results_increment_svm[:, -1] * scale, '-*', label='I-SVM')
-    plt.plot(results_normal_nw[:, 0], results_normal_nw[:, -1] * scale, '-+', label='MLPNN')
+    #plt.plot(results_normal_nw[:, 0], results_normal_nw[:, -1] * scale, '-+', label='MLPNN')
     plt.plot(results_normal_svm[:, 0], results_normal_svm[:, -1] * scale, '-D', label='SVM')
 
-    plt.xlabel('Increment learning nums', fontsize=16)
-    plt.ylabel('training time(s) of Classifier', fontsize=16)
+#    plt.xlabel('Increment learning nums', fontsize=16)
+#    plt.ylabel('training time(s) of Classifier', fontsize=16)
+#    plt.legend(loc='best')
+#    plt.title('training time of Classifier')
+    plt.xlabel('增量学习次数', fontproperties=myfont)
+    plt.ylabel('分类器增量训练时间(s)', fontproperties=myfont)
     plt.legend(loc='best')
-    plt.title('training time of Classifier')
+  
 
     plt.show()
     return

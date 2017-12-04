@@ -20,8 +20,8 @@ if __name__ =='__main__':
     # 紫外光谱测试是测了190到600nm波段 分析的时候 取240-500nm即可
     raw_x = x[:,50:311]
     y = raw_data[:,-1]
-    #raw_x = np.loadtxt('x1.txt')
-    #y = np.loadtxt('y1.txt')
+#    raw_x = np.loadtxt('x1.txt')
+#    y = np.loadtxt('y1.txt')
 
     # PCA降维
     pca = PCA(n_components=5)
@@ -69,13 +69,24 @@ if __name__ =='__main__':
     # 绘制三维PCA图
     from mpl_toolkits.mplot3d import Axes3D
 
-    fig = plt.figure()
+    c=['b', 'g', 'r', 'c', 'm', 'y', '#CD853F', '#005050','#905020']
+    m= ['o','*','^','s','p','h','+','D','8']
+    fig = plt.figure(figsize=(15,10))
+    
     ax = fig.add_subplot(111, projection='3d')
-    for i in range(1, 4):
+    #plt.title('长城红葡萄酒的PCA',fontproperties=myfont)
+    plt.legend(loc='best')
+    xrange = 6 # 绘图样本数量的范围
+    for i in range(1, 10):
         xx = x[y == i]
-        ax.scatter( xx[:, index1], xx[:, index2], xx[:, index3] )  # 绘制数据点
+        ax.scatter( xx[:xrange, index1], xx[:xrange, index2], xx[:xrange, index3],marker=m[i-1],s=50,label='class %s'%(i))  # 绘制数据点
+        ax.set_label('class %s'%(i+1) )    
         ax.legend(loc='best')
-        ax.set_title('长城红葡萄酒的PCA')
+        
+    ax.set_xlabel('PC %s (%.2f %%)' % (1,pca.explained_variance_ratio_[0] * 100 ),fontsize = 16 )  
+    ax.set_ylabel('PC %s (%.2f %%)' % (2,pca.explained_variance_ratio_[1] * 100 ),fontsize = 16 ) 
+    ax.set_zlabel('PC %s (%.2f %%)' % (3,pca.explained_variance_ratio_[2] * 100 ),fontsize = 16 ) 
+    ax.legend(loc='best')
     plt.show()
     '''
     #===========================
