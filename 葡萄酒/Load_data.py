@@ -6,7 +6,6 @@
 import numpy as np
 import pandas as pd
 import scipy as sp
-from matplotlib import pyplot as plt
 
 def load_ranman_data(path=u'D:\\20_同步文件\\newPaper\\葡萄酒\\data\\拉曼光谱\\Raman积分时间2秒',isJiaozheng=True):
     '''

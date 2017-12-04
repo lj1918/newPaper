@@ -345,6 +345,6 @@ if __name__ == '__main__':
     '''
     # 直方图
     plt.figure()
-    plt.hist(indices,15)
+    plt.hist(indices,5)
     plt.show()
 

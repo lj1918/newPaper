@@ -8,6 +8,8 @@ import pandas as pd
 import scipy as sp
 import Load_data
 from matplotlib import pyplot as plt
+from matplotlib.font_manager import *
+myfont = FontProperties(fname=u'C:\Windows\Fonts\simsun.ttc',size=20)
 
 if __name__ == '__main__':
     ## ======================================================
@@ -18,11 +20,12 @@ if __name__ == '__main__':
     # 使用分片翻转列的顺序,其中[::-1]代表从后向前取值，每次步进值为1
     x = x[:, ::-1]
     # 紫外光谱测试是测了190到600nm波段 分析的时候 取240-500nm即可
-    x = x[:, 50:311]
+    #x = x[:, 50:311]
+    x = x[:, :]
     y = raw_data[:, -1]
-
+    beginWavelet = 190 # 开始波长
     # WC-001 – WC-006 王朝干红葡萄酒
-    yy = np.arange(240,x.shape[1]+240)
+    yy = np.arange(beginWavelet,x.shape[1]+beginWavelet)
     xx = x[y == 1, :]
     plt.plot(yy,xx[0,:],label='class 1')
 
@@ -50,9 +53,12 @@ if __name__ == '__main__':
     xx = x[y == 9, :]
     plt.plot(yy,xx[0,:],label='class 9')
 
-    plt.xlabel('Wavelength/nm',fontsize=16)
-    plt.ylabel('Absorbance',fontsize=16)
+    #plt.xlabel('Wavelength/nm',fontsize=16)
+    #plt.ylabel('Absorbance',fontsize=16)
+    plt.xlabel('波 长/nm', fontproperties=myfont)
+    plt.ylabel('吸 光 率', fontproperties=myfont)
     plt.legend(loc='best')
+    plt.grid(True)
 
     plt.show()
 
