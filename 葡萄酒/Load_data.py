@@ -160,3 +160,18 @@ def load_zhiwai_data(path=u'D:\\20_同步文件\\newPaper\\葡萄酒\\data\\紫�
 
     data  = np.vstack((cc_data, wc_data, zy_data))
     return data
+
+def load_zhiwai_data2(path=u'D:\\20_同步文件\\newPaper\\葡萄酒\\data\\紫外光谱'):
+    '''
+    x = 190到600nm波段紫外光谱数据
+    y = 标记
+    '''
+    raw_data = load_zhiwai_data(path=path)
+    x = raw_data[:,:-2]
+    # 使用分片翻转列的顺序,其中[::-1]代表从后向前取值，每次步进值为1
+    x = x[:,::-1]
+    y = raw_data[:,-1]
+    return x,y
+    
+    
+    

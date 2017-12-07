@@ -164,7 +164,7 @@ def Incremental_svm(Batchs=20,ini_train_size = 0.05,Do_pca=False):
         train_data = np.concatenate(( test_x[i * nums : ((i + 1) * nums * train_size).astype('int'), :], sv), axis=0 )  # 令A= B∪AHV 作为新训练样本集
         train_data_label = np.concatenate(( test_y[i * nums : ((i + 1) * nums * train_size).astype('int')], sv_label),
                                           axis=0 )
-
+        # 计时开始
         t1 = time.time()
         clf = svm.SVC()
         model = clf.fit(train_data, train_data_label)
@@ -264,10 +264,117 @@ def Normal_nw(Batchs=20,Train_size = 0.05,Do_pca=False):
 
     np.savetxt('normal_nw.txt', results)
     return
+
+def get_yy(y):
+    '''
+    返回大类标签
+    '''
+    yy = np.ones_like( y )
+    yy[ np.where(y==1) ]=1
+    yy[ np.where(y==2) ]=1
+    yy[ np.where(y==3) ]=1
+    
+    yy[ np.where(y==4) ]=2
+    yy[ np.where(y==5) ]=2
+    yy[ np.where(y==6) ]=2
+    
+    yy[ np.where(y==7) ]=3
+    yy[ np.where(y==8) ]=3
+    yy[ np.where(y==9) ]=3
+    return yy
+
+def layer_svm(Batchs=20,Train_size = 0.05,Do_pca=False):
+    # ======================================================
+    # 一、获取数据
+    # ======================================================
+    x = np.loadtxt('x1.txt')
+    y = np.loadtxt('y1.txt')
+    # 大类标签
+    yy = get_yy(y)
+
+    # ======================================================
+    # 二、数据预处理
+    # 标准化
+    scaler = StandardScaler()
+    x = scaler.fit_transform(x)
+
+    # PCA降维
+    if Do_pca == True:
+        pca = PCA(n_components=10)
+        pca.fit(x)
+        x = pca.transform(x)
+
+    # 切分训练集与测试集
+    train_x, test_x, train_y, test_y = train_test_split(x, y, train_size=Train_size, random_state=0)
+    # 训练集、测试集的大类标签
+    train_yy = get_yy(train_y)
+    test_yy = get_yy(test_y)
+    
+    # =======================================================
+    # 三、训练分类模型
+    # 1、训练初始svm
+    clf = svm.SVC( C=12 ,gamma=0.01,kernel='rbf' ) # 大类分类器
+    model = clf.fit(train_x, train_yy)
+    result_yy = clf.predict(test_x)
+    result = result_yy - test_yy
+    sv = model.support_vectors_
+    print('=====================================')
+    print('初始化大类分类器：')
+    print('初始化大类分类器的正确率：%f' % (np.sum(result == 0) / result.shape[0]))
+    print('支持向量数量为%d' % (sv.shape[0]))
+    
+    clf1 = svm.SVC( C=12 ,gamma=0.01,kernel='rbf' ) # 大类分类器
+    model1 = clf1.fit( train_x[ np.where(train_yy==1) ],   train_y[ np.where(train_yy==1)] )
+    result_yy = clf.predict(test_x[ np.where(train_yy==1) ])
+    result = result_yy - test_yy[ np.where(train_yy==1) ]
+    sv1 = model1.support_vectors_
+    print('=====================================')
+    print('初始化小类1分类器：')
+    print('初始化小类1分类器的正确率：%f' % (np.sum(result == 0) / result.shape[0]))
+    print('支持向量数量为%d' % (sv1.shape[0]))
+    
+    clf2 = svm.SVC( C=12 ,gamma=0.01,kernel='rbf' ) # 大类分类器
+    model2 = clf2.fit( train_x[ np.where(train_yy==2) ],   train_y[ np.where(train_yy==2)] )
+    result_yy = clf2.predict(test_x[ np.where(train_yy==2) ])
+    result = result_yy - test_yy[ np.where(train_yy==2) ]
+    sv2 = model2.support_vectors_
+    print('=====================================')
+    print('初始化小类2分类器：')
+    print('初始化小类2分类器的正确率：%f' % (np.sum(result == 0) / result.shape[0]))
+    print('支持向量数量为%d' % (sv2.shape[0]))
+    
+    clf3 = svm.SVC( C=12 ,gamma=0.01,kernel='rbf' ) # 大类分类器
+    model3 = clf3.fit( train_x[ np.where(train_yy==3) ],   train_y[ np.where(train_yy==3)] )
+    result_yy = clf3.predict(test_x[ np.where(train_yy==3) ])
+    result = result_yy - test_yy[ np.where(train_yy==3) ]
+    sv3 = model3.support_vectors_
+    print('=====================================')
+    print('初始化小类3分类器：')
+    print('初始化小类3分类器的正确率：%f' % (np.sum(result == 0) / result.shape[0]))
+    print('支持向量数量为%d' % (sv3.shape[0]))    
+    
+    # 3、开始增量学习
+    batchs = Batchs  # 学习批次
+    nums = np.floor(test_x.shape[0] / batchs).astype('int')  # 进行切片运算时，必须是整数
+    remainder = test_x.shape[0] % batchs
+    results = np.zeros((batchs, 7))
+    print('=====================================')
+    print('学习批次=\t', batchs)
+    print('每批样本数量=\t', nums)
+    print('余数=\t', remainder)
+    print('=====================================')
+    print('开始增量学习：')
+    batchs_train_x = train_x.copy()
+    batchs_train_y = train_y.copy()
+    
+    pass
+    
+
 def draw_pic():
     results_normal_nw = np.loadtxt('normal_nw.txt')
     results_increment_svm = np.loadtxt('increment_svm.txt')
     results_normal_svm = np.loadtxt('normal_svm.txt')
+    results_layer_svm = np.loadtxt('layer_svm.txt')
     
     print('normal nw min=%.2f,max = %.2f,mean = %.2f, std= %.2f, Accuracy = %.4f ,time = %.4f'%(np.min(results_normal_nw[:,-1]),
                                                                   np.max(results_normal_nw[:,-1]),
@@ -292,7 +399,13 @@ def draw_pic():
                                                                   np.mean(results_normal_svm[:,-2]),
                                                                   np.mean(results_normal_svm[:,-1])
                                                                   ))
-    
+    print('layer_svm min=%.2f,max = %.2f,mean = %.2f, std= %.2f, Accuracy = %.4f ,time = %.4f' % (np.min(results_layer_svm[:,-1]),
+                                                              np.max(results_layer_svm[:,-1]),
+                                                              np.mean(results_layer_svm[:,-1]),
+                                                              np.std(results_layer_svm[:,-1]),
+                                                              np.mean(results_layer_svm[:,-2]),
+                                                              np.mean(results_layer_svm[:,-1])
+                                                              )) 
     
 
     plt.figure(1)
@@ -301,6 +414,7 @@ def draw_pic():
     plt.plot(results_increment_svm[:, 0], results_increment_svm[:, -2] * 100, '-*', label='SV-SVM')
     #plt.plot(results_normal_nw[:, 0], results_normal_nw[:, -2] * 100, '-+', label='MLPNN')
     plt.plot(results_normal_svm[:, 0], results_normal_svm[:, -2] * 100, '-D', label='SVM')
+    plt.plot(results_layer_svm[:, 0], results_layer_svm[:, -2] * 100, '-D', label='layer_svm')
     plt.ylim((40, 100))
     # plt.title('Classification accuracies of the normal svm and hull svm')
 #    plt.xlabel('Increment learning nums', fontsize=16)
@@ -314,6 +428,7 @@ def draw_pic():
     plt.plot(results_increment_svm[:, 0], results_increment_svm[:, -1] * scale, '-*', label='I-SVM')
     #plt.plot(results_normal_nw[:, 0], results_normal_nw[:, -1] * scale, '-+', label='MLPNN')
     plt.plot(results_normal_svm[:, 0], results_normal_svm[:, -1] * scale, '-D', label='SVM')
+    plt.plot(results_layer_svm[:, 0], results_layer_svm[:, -1] * scale, '-^', label='layer_svm')
 
 #    plt.xlabel('Increment learning nums', fontsize=16)
 #    plt.ylabel('training time(s) of Classifier', fontsize=16)
@@ -331,6 +446,7 @@ if __name__ == '__main__':
     #Normal_nw(Batchs=batchs)
     #Incremental_svm(Batchs=batchs)
     #Normal_svm(Batchs=batchs)
+    #layer_svm(Batchs=batchs)
 
     # 绘图
     draw_pic()
