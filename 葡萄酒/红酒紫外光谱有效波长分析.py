@@ -37,8 +37,52 @@ if __name__ == "__main__":
         print("%d. feature %d (%f)" % (f + 1, indices[f], importances[indices[f]]))
 
     #indices = indices[0:100] + 190
+    # 直方图无法显示出各个波长的重要性
+    # hist(x)：这种格式中x是一维向量，函数的作用是将x中的最小和最大值之间的区间等分成10等份，
+    # 输出的直方图横坐标是x值，纵坐标是该值的个数可以理解为下面中的hist(x,10)。
+#    plt.figure()
+#    plt.hist(importances[indices[:]],100)
+#    plt.xticks( (indices[::30]),(indices[::30]+190) )
+#    plt.show()
 
-    # 直方图
+#    # bar图
+#    # 对于bar函数的使用一般格式如下：bar(x,y) 其中x必须是严格递增的且一维向量x和一维向量y长度相同。
+#    # 以一维向量x的值为x坐标，对应的y为y坐标画直方图。
+#    plt.figure()
+#    barIndices = np.argsort(indices) # 按照波长进行排序
+#    plt.bar( indices[barIndices]+190, importances[barIndices] )
+#    #plt.plot(indices[barIndices]+190,importances[barIndices],'ro')
+#    plt.plot(indices[barIndices]+190,importances[barIndices],'r-')
+#    plt.show()
+    
+    plt.figure()
+    #
+    plt.subplot(311)
+    plt.title('全部波长对分类的重要度',fontproperties=myfont)
+    barIndices = np.argsort(indices) # 按照波长进行排序
+    plt.scatter( indices[barIndices] +190, importances[barIndices] )    
+    plt.ylim((0,0.01))
+    plt.xlim((190,610))
+    
+    plt.subplot(312)
+    plt.title('对分类的重要度大于0.002的波长及其重要度',fontproperties=myfont)
+    plt.plot( indices[barIndices][ importances[barIndices] > 0.002] +190, 
+             importances[ importances[barIndices] > 0.002])
+    plt.ylim((0,0.01))
+    plt.xlim((190,610))
+    
+    plt.subplot(313)
+    plt.title('对分类的重要度在前50名的波长及其重要度',fontproperties=myfont)
+    plt.scatter( indices[:51]  +190, importances[indices[:51] ])
+    plt.ylim((0,0.01))
+    plt.xlim((190,610))
+    
+    #plt.plot(indices[barIndices]+190,importances[barIndices],'ro')
+    #plt.plot( indices[barIndices][ importances[barIndices] > 0.002] +190, importances[ importances[barIndices] > 0.002],'r-')
+    plt.show()
+
+    
+    # 散点图
     plt.figure()
     plt.subplot(311)
     plt.scatter(indices[0:51] + 190,importances[indices[0:51]])
@@ -58,3 +102,4 @@ if __name__ == "__main__":
               fontproperties=myfont)
     print(np.sum(importances[indices[0:151]]))
     plt.show()
+    
